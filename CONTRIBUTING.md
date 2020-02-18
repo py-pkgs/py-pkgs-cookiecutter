@@ -11,7 +11,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+Report bugs at https://github.com/UBC-MDS/cookiecutter-ubc-mds/issues.
 
 If you are reporting a bug, please include:
 
@@ -37,7 +37,7 @@ articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+The best way to send feedback is to file an issue at https://github.com/UBC-MDS/cookiecutter-ubc-mds/issues.
 
 If you are proposing a feature:
 
@@ -48,74 +48,33 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for local development.
+Ready to contribute? Here's how to set up `cookiecutter-ubc-mds` for local development.
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitHub.
+1. Fork the `cookiecutter-ubc-mds` repo on GitHub.
+
 2. Clone your fork locally:
 
-```
- git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
-```
-
-3. Install your local copy with Poetry, this is how you set up your fork for local development:
-
-```
-cd {{ cookiecutter.project_slug }}/
-poetry install```
+	```
+ 	git clone git@github.com:your_name_here/cookiecutter-ubc-mds.git
+	```
 
 4. Create a branch for local development:
 
-```
-git checkout -b name-of-your-bugfix-or-feature
-```
+	```
+	git checkout -b name-of-your-bugfix-or-feature
+	```
+	Now you can make your changes locally.
 
-   Now you can make your changes locally.
+5. Commit your changes and push your branch to GitHub:
 
-5. When you're done making changes, check that your changes pass the tests by running pytest
+	```
+	git add .
+	git commit -m "Your detailed description of your changes."
+	git push origin name-of-your-bugfix-or-feature
+	```
 
-```
-poetry run pytest
-```
-
-6. Commit your changes and push your branch to GitHub:
-
-```
-git add .
-git commit -m "Your detailed description of your changes."
-git push origin name-of-your-bugfix-or-feature
-```
-
-7. Submit a pull request through the GitHub website.
-
-## Pull Request Guidelines
-
-Before you submit a pull request, check that it meets these guidelines:
-
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.md.
-3. The pull request should work for Python3.4, 3.5 and 3.6, and for PyPI. Check https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pulls and make sure that the tests pass for all supported Python versions.
-
-## Tips
-
-To run a subset of tests:
-
-```
-py.test tests.test_{{ cookiecutter.project_slug }}
-```
-
-## Deploying
-
-A reminder for the maintainers on how to deploy:
-
-- Ensure the following secrets are recorded on GitHub:
-	- CODECOV_TOKEN	
-	- PYPI_USERNAME
- 	- PYPI_PASSWORD	
-
- GitHub Actions should build and deploy to testPyPI when a pull request is merged into master.
+6. Submit a pull request through the GitHub website.
 
 ## Code of Conduct
 
-Please note that the {{ cookiecutter.project_name }} project is released with [this Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
+Please note that the cookiecutter-ubc-mds project is released with [this Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
