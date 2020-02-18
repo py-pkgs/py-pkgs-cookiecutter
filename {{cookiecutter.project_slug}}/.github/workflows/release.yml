@@ -1,0 +1,77 @@
+name: Release
+
+on: 
+  push:
+    branches: [master]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      env:
+        POETRY_VIRTUALENVS_CREATE: false
+      run: |
+        pip install poetry
+        poetry install
+    - name: Test with pytest
+      run: |
+        poetry run pytest --cov=./ --cov-report=xml
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        yml: ./codecov.yml 
+        fail_ci_if_error: true
+    - name: checkout
+      uses: actions/checkout@master
+      with:
+        ref: master
+    - name: Bump version and tagging and publish
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git pull origin master
+        poetry run semantic-release version
+        poetry version $(grep "version" foocat/__init__.py | cut -d "'" -f 2)
+        git commit -m "Add changes" -a
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEBUG: semantic_release.*
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Release tag
+      run: |
+        echo ::set-output name=release_tag::$(grep "version" foocat/__init__.py | cut -d " " -f 3)
+      id: release
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.release.outputs.release_tag }}
+        release_name: ${{ steps.release.outputs.release_tag }}
+        draft: false
+        prerelease: false
+    - name: Build and publish
+      env:
+        PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        poetry config repositories.foocat https://test.pypi.org/legacy/
+        poetry build
+        poetry publish -r foocat -u $PYPI_USERNAME -p $PYPI_PASSWORD
