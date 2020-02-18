@@ -21,3 +21,4 @@
 **.installed.cfg
 **.egg
 **MANIFEST
+**__pycache__
