@@ -29,6 +29,7 @@ cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
 
 Initialize it with Poetry:
 ```
+cd <your_project>
 poetry init
 ```
 
