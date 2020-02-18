@@ -22,9 +22,14 @@ requires Cookiecutter 1.4.0 or higher)
 pip install -U cookiecutter
 ```
 
-Generate a Python package project:
+Generate a Python package file and directory structure:
 ```
 cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
+```
+
+Initialize it with Poetry:
+```
+poetry init
 ```
 
 For more details, see the [Whole Game Chapter](https://ubc-mds.github.io/py-pkgs/whole-game.html) of the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/)
