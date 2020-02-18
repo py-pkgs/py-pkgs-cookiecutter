@@ -3,7 +3,7 @@
 
 ## Development Lead
 
-* {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>
+* Tiffany Timbers <tiffany.timbers@gmail.com>
 
 ## Contributors
 
