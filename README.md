@@ -24,7 +24,7 @@ pip install -U cookiecutter
 
 Generate a Python package project:
 ```
-cookiecutter https://github.com/pyOpenSci/cookiecutter-pyopensci.git
+cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
 ```
 
 For more details, see the [Whole Game Chapter](https://ubc-mds.github.io/py-pkgs/whole-game.html) of the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/)
