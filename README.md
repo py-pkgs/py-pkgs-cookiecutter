@@ -43,9 +43,17 @@ requires Cookiecutter 1.4.0 or higher)
     
 5. Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 
+6. Render your documentation:
+   ```
+   cd docs
+   make html
+   ```
+
 6. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
 
-7. When you are satisfied, use poetry to publish your package to testPyPI.
+7. To have your docs appear on Read the Docs, follow the instructions here: https://dont-be-afraid-to-commit.readthedocs.io/en/latest/documentation.html#readthedocs-org
+
+8. When you are satisfied, use poetry to publish your package to testPyPI.
 
 
 #### Optional (automated version bumping and release to test PyPI)
