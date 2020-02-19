@@ -27,18 +27,30 @@ requires Cookiecutter 1.4.0 or higher)
    cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
    ```
 
-3. Initialize it with Poetry:
+3. Initialize it with Poetry. Adding the following dev dependencies when prompted:
+   - pytest
+   - pytest-cov
+   - codecov
+   - flake8
+   - sphinx
+
    ```
    cd <your_project>
    poetry init
    ```
-   
-4. Write the code and tests for your Python package! And use Python poetry to install, add dependencies, test your package and publish to PyPI. For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
+
+4. Create a remote version control repository on GitHub for this project, and link it to <https://codecov.io/>. Get the repository token from <https://codecov.io/> and record is as a secret on GitHub using the name `CODECOV_TOKEN`.
+    
+5. Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
+
+6. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
+
+7. When you are satisfied, use poetry to publish your package to testPyPI.
 
 
 #### Optional (automated version bumping and release to test PyPI)
 
-5. Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
+8. Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
    ```
    [tool.semantic_release]
    version_variable = "<your_project>/__init__.py:__version__"
@@ -47,14 +59,12 @@ requires Cookiecutter 1.4.0 or higher)
    patch_without_tag = "true"
    ```
 
-6. Create a remote version control repository on GitHub for this project and ensure the following secrets are recorded on GitHub:
+9. Add the following secrets to the project's repository on GitHub:
    - CODECOV_TOKEN
    - PYPI_USERNAME
    - PYPI_PASSWORD
 
-7. Login to <https://codecov.io/> and link the GitHub repository to Codecov.
-
-8. Put your local files under version control with Git, add the GtiHub repository you set up as the remote and push your changes to GitHub!
+10. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen!
 
 For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 
