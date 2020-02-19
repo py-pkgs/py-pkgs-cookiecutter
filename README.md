@@ -51,7 +51,7 @@ requires Cookiecutter 1.4.0 or higher)
 
 6. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
 
-7. To have your docs appear on Read the Docs, follow the instructions here: https://dont-be-afraid-to-commit.readthedocs.io/en/latest/documentation.html#readthedocs-org
+7. To have your docs appear on Read the Docs, follow the instructions here: <https://dont-be-afraid-to-commit.readthedocs.io/en/latest/documentation.html#readthedocs-org>
 
 8. When you are satisfied, use poetry to publish your package to testPyPI.
 
