@@ -60,7 +60,6 @@ requires Cookiecutter 1.4.0 or higher)
    ```
 
 9. Add the following secrets to the project's repository on GitHub:
-   - CODECOV_TOKEN
    - PYPI_USERNAME
    - PYPI_PASSWORD
 
