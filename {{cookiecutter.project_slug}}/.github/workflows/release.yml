@@ -44,7 +44,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git pull origin master
         poetry run semantic-release version
-        poetry version $(grep "version" foocat/__init__.py | cut -d "'" -f 2)
+        poetry version $(grep "version" foocat/__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
         git commit -m "Add changes" -a
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Release tag
       run: |
-        echo ::set-output name=release_tag::$(grep "version" foocat/__init__.py | cut -d " " -f 3)
+        echo ::set-output name=release_tag::$(grep "version" foocat/__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
       id: release
     - name: Create Release
       id: create_release
