@@ -11,7 +11,6 @@ Welcome to {{ cookiecutter.project_name }}'s documentation!
    modules
    contributing
    contributors
-   history
 
 Indices and tables
 ==================
