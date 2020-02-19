@@ -33,6 +33,11 @@ cd <your_project>
 poetry init
 ```
 
+Add local and remote version control using Git & GitHub for this project and ensure the following secrets are recorded on GitHub:
+- CODECOV_TOKEN
+- PYPI_USERNAME
+- PYPI_PASSWORD
+
 For more details, see the [Whole Game Chapter](https://ubc-mds.github.io/py-pkgs/whole-game.html) of the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/)
 
 ### Credits
