@@ -33,10 +33,25 @@ cd <your_project>
 poetry init
 ```
 
-Add local and remote version control using Git & GitHub for this project and ensure the following secrets are recorded on GitHub:
+#### Optional (automated version bumping and release to test PyPI)
+
+Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
+```
+[tool.semantic_release]
+version_variable = "<your_project>/__init__.py:__version__"
+version_source = "commit"
+upload_to_pypi = "false"
+patch_without_tag = "true"
+```
+
+Create a remote version control repository on GitHub for this project and ensure the following secrets are recorded on GitHub:
 - CODECOV_TOKEN
 - PYPI_USERNAME
 - PYPI_PASSWORD
+
+Login to <https://codecov.io/> and link the GitHub repository to Codecov.
+
+Put your local files under version control with Git, add the GtiHub repository you set up as the remote and push your changes to GitHub!
 
 For more details, see the [Whole Game Chapter](https://ubc-mds.github.io/py-pkgs/whole-game.html) of the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/)
 
