@@ -68,12 +68,20 @@ requires Cookiecutter 1.4.0 or higher)
    ```
 
 12. Add the following secrets to the project's repository on GitHub:
-   - PYPI_USERNAME
-   - PYPI_PASSWORD
+   - TEST_PYPI_USERNAME
+   - TEST_PYPI_PASSWORD
 
 13. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen!
 
 For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
+
+#### Optional (push to PyPI as opposed to testPyPI)
+
+14. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml#L80) of the release GitHub Actions workflow to this:
+
+```
+poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
+```
 
 ### Credits
 
