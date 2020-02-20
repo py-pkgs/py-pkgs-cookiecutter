@@ -31,6 +31,7 @@ requires Cookiecutter 1.4.0 or higher)
    - pytest
    - pytest-cov
    - codecov
+   - python-semantic-release
    - flake8
    - sphinx
 
@@ -46,7 +47,7 @@ requires Cookiecutter 1.4.0 or higher)
 6. Render your documentation:
    ```
    cd docs
-   make html
+   poetry run make html
    ```
 
 6. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
