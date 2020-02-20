@@ -159,5 +159,6 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
+# Add napoleon to the extensions list
+extensions = ['sphinxcontrib.napoleon']
 
