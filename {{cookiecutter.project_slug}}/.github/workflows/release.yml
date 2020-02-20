@@ -40,6 +40,7 @@ jobs:
       uses: actions/checkout@master
       with:
         ref: master
+        fetch-depth: '0'
     - name: Bump version and tagging and publish
       run: |
         git config --local user.email "action@github.com"
