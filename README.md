@@ -44,7 +44,7 @@ requires Cookiecutter 1.4.0 or higher)
 
 7. Render your documentation:
    ```
-   sphinx-apidoc -f -o docs/source <your_project>
+   poetry run sphinx-apidoc -f -o docs/source <your_project>
    cd docs
    poetry run make html
    ```
