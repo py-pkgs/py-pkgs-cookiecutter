@@ -1,6 +1,6 @@
 ## Cookiecutter UBC-MDS
 
-**Cookiecutter** template for a UBC-MDS Python packge.
+**Cookiecutter** template for creating a Python packge using [Poetry](https://python-poetry.org/).
 -  Free software: BSD license
 
 ### Features
