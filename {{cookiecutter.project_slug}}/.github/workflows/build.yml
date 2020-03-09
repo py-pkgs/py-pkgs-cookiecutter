@@ -16,8 +16,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      env:
-        POETRY_VIRTUALENVS_CREATE: false
       run: |
         pip install poetry
         poetry install
