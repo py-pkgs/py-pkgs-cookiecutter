@@ -53,12 +53,20 @@ requires Cookiecutter 1.4.0 or higher)
 
 9. To have your docs appear on Read the Docs, follow the instructions here: <https://dont-be-afraid-to-commit.readthedocs.io/en/latest/documentation.html#readthedocs-org>
 
-10. When you are satisfied, use poetry to publish your package to testPyPI.
+10. Add the following information to the `[tool.poetry]` table in `pyproject.toml`:
+   ```
+   readme = "README.md"
+   homepage = "https://github.com/<github_username>/<github_repo>"
+   repository = "https://github.com/<github_username>/<github_repo>"
+   documentation = 'https://<package_name>.readthedocs.io'
+   ```
+
+11. When you are satisfied, use poetry to publish your package to testPyPI.
 
 
 #### Optional (automated version bumping and release to test PyPI)
 
-11. Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
+12. Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
    ```
    [tool.semantic_release]
    version_variable = "<your_project>/__init__.py:__version__"
@@ -67,17 +75,17 @@ requires Cookiecutter 1.4.0 or higher)
    patch_without_tag = "true"
    ```
 
-12. Add the following secrets to the project's repository on GitHub:
+13. Add the following secrets to the project's repository on GitHub:
    - TEST_PYPI_USERNAME
    - TEST_PYPI_PASSWORD
 
-13. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen!
+14. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen!
 
 For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 
 #### Optional (push to PyPI as opposed to testPyPI)
 
-14. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml#L80) of the release GitHub Actions workflow to this:
+15. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml#L80) of the release GitHub Actions workflow to this:
 
 ```
 poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
