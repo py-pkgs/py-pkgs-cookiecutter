@@ -36,7 +36,7 @@ jobs:
       with:
         ref: master
         fetch-depth: '0'
-    - name: Bump version and tagging and publish
+    - name: Bump package versions
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
@@ -46,16 +46,15 @@ jobs:
         git commit -m "Add changes" -a
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEBUG: semantic_release.*
-    - name: Push changes
+    - name: Push package version changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Release tag
+    - name: Get release tag version from package version
       run: |
         echo ::set-output name=release_tag::$(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
       id: release
-    - name: Create Release
+    - name: Create Release with new version
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -65,7 +64,7 @@ jobs:
         release_name: ${{ steps.release.outputs.release_tag }}
         draft: false
         prerelease: false
-    - name: Build and publish
+    - name: Build package and publish to test PyPI
       env:
         TEST_PYPI_USERNAME: ${{ secrets.TEST_PYPI_USERNAME }}
         TEST_PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
