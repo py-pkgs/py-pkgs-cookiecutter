@@ -81,7 +81,7 @@ requires Cookiecutter 1.4.0 or higher)
 
 14. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen!
 
-For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
+   For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 
 #### Optional (push to PyPI as opposed to testPyPI)
 
