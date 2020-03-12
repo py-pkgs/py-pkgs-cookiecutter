@@ -91,6 +91,78 @@ For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
 ```
 
+#### Optional (continuous deployment when master branch protection is enabled)
+
+16. If you want to use the `release.yml` GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to `release.yml`. . The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run **after** the pull request is merged to master. Therefore, when we bump the versions in the `pyproject.toml` file and the `package/__init__.py` file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!
+
+    What are we to do? The most straightforward thing appears to be to use a bot to briefly turn off master branch protection just before we push the files where we bumped the version, and then use the bot to turn it back on again after pushing. To do this, we will use the [`benjefferies/branch-protection-bot` action](https://github.com/benjefferies/branch-protection-bot).
+    
+    Looking at [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml), we will add the `branch-protection-bot` action to **turn off** master branch protection after the step named "checkout" but before the step named "Bump package versions". We will also add the `branch-protection-bot` action to **turn on** master branch protection after the step named "Push package version changes" but before the step named "Get release tag version from package version".
+    
+    Below is the section of our [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml) **before** we add the `branch-protection-bot`:
+    
+    ```
+    - name: checkout
+      uses: actions/checkout@master
+      with:
+        ref: master
+        fetch-depth: '0'
+    - name: Bump package versions
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        poetry run semantic-release version
+        poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
+        git commit -m "Bump versions" -a
+    - name: Push package version changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Get release tag version from package version
+      run: |
+        echo ::set-output name=release_tag::$(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
+      id: release
+    ```
+    
+    Below is the section of our [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml) **after** we add the `branch-protection-bot`:
+    
+    ```
+    - name: checkout
+      uses: actions/checkout@master
+      with:
+        ref: master
+        fetch-depth: '0'
+    - name: Temporarily disable "include administrators" branch protection
+      uses: benjefferies/branch-protection-bot@master
+      if: always()
+      with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+    - name: Bump package versions
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        poetry run semantic-release version
+        poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
+        git commit -m "Bump versions" -a
+    - name: Push package version changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Enable "include administrators" branch protection
+      uses: benjefferies/branch-protection-bot@master
+      if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
+      with:
+        access-token: ${{ secrets.ACCESS_TOKEN }}
+        owner: <github_username_or_org>
+        repo: <github_repo_name>
+    - name: Get release tag version from package version
+      run: |
+        echo ::set-output name=release_tag::$(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
+      id: release
+    ```
+    
+    Finally, to make this work you will need to add one of your team members personal GitHub access tokens as a GitHub secret named `ACCESS_TOKEN` (see [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) for how to get your personal GitHub access token).
+
 ### Credits
 
 This template was modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
