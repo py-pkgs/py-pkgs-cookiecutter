@@ -7,4 +7,4 @@
 
 ## Contributors
 
-None yet. Why not be the first?
+* Tomas Beuzen <tomas.beuzen@gmail.com>
