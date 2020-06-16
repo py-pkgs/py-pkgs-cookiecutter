@@ -10,8 +10,8 @@
 -  **codecov**: Code coverage report and badge using codecov and GitHub Actions
 -  **Sphinx** docs: Documentation ready for generation with, for
    example, **ReadTheDocs**
--  **Python-semantic-release**: Pre-configured version bumping upon merging pull request to master
--  Auto-release to **testPyPI** upon merging pull request to master
+-  **Python-semantic-release**: Pre-configured version bumping upon merging pull request to main
+-  Auto-release to **testPyPI** upon merging pull request to main
 
 ### Quickstart
 
