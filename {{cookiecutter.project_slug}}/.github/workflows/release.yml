@@ -2,7 +2,7 @@ name: Release
 
 on: 
   push:
-    branches: [master]
+    branches: [main]
     
 jobs:
   build:
@@ -34,12 +34,12 @@ jobs:
     - name: checkout
       uses: actions/checkout@master
       with:
-        ref: master
-        fetch-depth: '0'
-    - name: Bump package versions
+        ref: main
+    - name: Bump version and tagging and publish
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git pull origin main
         poetry run semantic-release version
         poetry version $(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
         git commit -m "Bump versions" -a
