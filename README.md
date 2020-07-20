@@ -86,7 +86,7 @@ requires Cookiecutter 1.4.0 or higher)
 
 #### Optional (push to PyPI as opposed to testPyPI)
 
-15. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml#L80) of the release GitHub Actions workflow to this:
+15. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml#L74) of the release GitHub Actions workflow to this:
 
 ```
 poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
@@ -94,13 +94,13 @@ poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
 
 #### Optional (continuous deployment when master branch protection is enabled)
 
-16. If you want to use the `release.yml` GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to `release.yml`. . The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run **after** the pull request is merged to master. Therefore, when we bump the versions in the `pyproject.toml` file and the `package/__init__.py` file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!
+16. If you want to use the `deploy.yml` GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to `deploy.yml`. . The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run **after** the pull request is merged to master. Therefore, when we bump the versions in the `pyproject.toml` file and the `package/__init__.py` file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!
 
     What are we to do? The most straightforward thing appears to be to use a bot to briefly turn off master branch protection just before we push the files where we bumped the version, and then use the bot to turn it back on again after pushing. To do this, we will use the [`benjefferies/branch-protection-bot` action](https://github.com/benjefferies/branch-protection-bot).
     
-    Looking at [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml), we will add the `branch-protection-bot` action to **turn off** master branch protection after the step named "checkout" but before the step named "Bump package versions". We will also add the `branch-protection-bot` action to **turn on** master branch protection after the step named "Push package version changes" but before the step named "Get release tag version from package version".
+    Looking at [`deploy.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml), we will add the `branch-protection-bot` action to **turn off** master branch protection after the step named "checkout" but before the step named "Bump package versions". We will also add the `branch-protection-bot` action to **turn on** master branch protection after the step named "Push package version changes" but before the step named "Get release tag version from package version".
     
-    Below is the section of our [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml) **before** we add the `branch-protection-bot`:
+    Below is the section of our [`deploy.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml) **before** we add the `branch-protection-bot`:
     
     ```
     - name: checkout
@@ -125,7 +125,7 @@ poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
       id: release
     ```
     
-    Below is the section of our [`release.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/release.yml) **after** we add the `branch-protection-bot`:
+    Below is the section of our [`deploy.yml`](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml) **after** we add the `branch-protection-bot`:
     
     ```
     - name: checkout

@@ -1,11 +1,9 @@
 {
   "full_name": "Monty Python",
-  "email": "monty.python@example.com",
   "github_username": "mpython",
   "project_name": "My Python package",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "This cookiecutter creates a boilerplate for a Python project.",
-  "pypi_username": "{{ cookiecutter.github_username }}",
   "version": "'0.1.0'",
   "open_source_license": [
     "MIT license",
@@ -14,8 +12,13 @@
     "Apache Software License 2.0",
     "GNU General Public License v3"
   ],
+  "include_github_actions": [
+    "no",
+    "build",
+    "build+deploy"
+  ],
   "_copy_without_render": [
     ".github/workflows/build.yml",
-    ".github/workflows/release.yml"
+    ".github/workflows/deploy.yml"
   ]
 }
