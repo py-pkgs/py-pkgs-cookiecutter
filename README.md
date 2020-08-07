@@ -1,10 +1,10 @@
-## Cookiecutter UBC-MDS
+# Cookiecutter UBC-MDS
 
 **Cookiecutter** template for creating a Python packge using [Poetry](https://python-poetry.org/). See the [Quickstart](#quickstart) guide below for getting started, or for a more guided introduction see [the Whole Game chapter of the Python packages book](https://ubc-mds.github.io/py-pkgs/whole-game.html).
 
 -  Free software: BSD license
 
-### Features
+## Features
 
 -  **pytest** testing: Setup to easily test for Python 3.7 & 3.8 (other Python versions can be added by editing the GitHub Actions workflow file) across ubuntu, mac and windows operating systems
 -  **GitHub Actions**: Ready for GitHub Actions Continuous Integration testing & Deployment
@@ -14,7 +14,7 @@
 -  **Python-semantic-release**: Pre-configured version bumping upon merging pull request to main
 -  Auto-release to **testPyPI** upon merging pull request to main
 
-### Quickstart
+## Quickstart
 
 1. Install the latest Cookiecutter if you haven't installed it yet (this
 requires Cookiecutter 1.4.0 or higher)
@@ -65,7 +65,7 @@ requires Cookiecutter 1.4.0 or higher)
 11. When you are satisfied, use poetry to publish your package to testPyPI.
 
 
-#### Optional (automated version bumping and release to test PyPI)
+### Optional (automated version bumping and release to test PyPI)
 
 12. Add the following to the `pyproject.toml` file (substituting <your_project> with the appropriate value):
    ```
@@ -84,7 +84,7 @@ requires Cookiecutter 1.4.0 or higher)
 
    For more details, see the [py-pkgs book](https://ubc-mds.github.io/py-pkgs/).
 
-#### Optional (push to PyPI as opposed to testPyPI)
+### Optional (push to PyPI as opposed to testPyPI)
 
 15. Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME & PYPI_PASSWORD to your project repo as GitHub secrets and change [this line](https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml#L74) of the release GitHub Actions workflow to this:
 
@@ -92,7 +92,7 @@ requires Cookiecutter 1.4.0 or higher)
 poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
 ```
 
-#### Optional (continuous deployment when master branch protection is enabled)
+### Optional (continuous deployment when master branch protection is enabled)
 
 16. If you want to use the `deploy.yml` GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to `deploy.yml`. . The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run **after** the pull request is merged to master. Therefore, when we bump the versions in the `pyproject.toml` file and the `package/__init__.py` file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!
 
@@ -164,6 +164,10 @@ poetry publish -u $PYPI_USERNAME -p $PYPI_PASSWORD
     
     Finally, to make this work you will need to add one of your team members personal GitHub access tokens as a GitHub secret named `ACCESS_TOKEN` (see [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) for how to get your personal GitHub access token).
 
-### Credits
+## Contributors
+
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/cookiecutter-ubc-mds/graphs/contributors).
+
+## Credits
 
 This template was modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
