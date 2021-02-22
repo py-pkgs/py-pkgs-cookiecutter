@@ -5,6 +5,7 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "This cookiecutter creates a boilerplate for a Python project.",
   "version": "'0.1.0'",
+  "python_version": "3.8"
   "open_source_license": [
     "MIT license",
     "BSD license",
