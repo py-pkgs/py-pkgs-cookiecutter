@@ -17,9 +17,5 @@
     "no",
     "build",
     "build+deploy"
-  ],
-  "_copy_without_render": [
-    ".github/workflows/build.yml",
-    ".github/workflows/deploy.yml"
   ]
 }
