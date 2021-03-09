@@ -76,7 +76,7 @@ if (
 ):
     _message_box(
         "WARNING:\n"
-        "Template successfuly created but the user '{{cookiecutter.github_username}}' does\n"
+        "Template successfully created but the user '{{cookiecutter.github_username}}' does\n"
         "not exist on github.com. Please check the 'github_username' entered.\n"
         "If you won't be using github.com you may ignore this warning.",
         color="orange",
