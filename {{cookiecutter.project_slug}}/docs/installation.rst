@@ -12,7 +12,7 @@ To install {{ cookiecutter.project_name }}, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install -i https://test.pypi.org/simple/ {{ cookiecutter.project_slug }}
+    $ pip install -u {{ cookiecutter.project_slug }}
 
 This is the preferred method to install {{ cookiecutter.project_name }}, as it will always install the most recent stable release.
 
@@ -40,11 +40,19 @@ Or download the `tarball`_:
 
     $ curl  -OL https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/tarball/main
 
-Once you have a copy of the source, you can install it with:
+Once you have a copy of the source, you can install it. The method of installation will depend on the packaging library being used.
+
+For example, if `setuptools` is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:
 
 .. code-block:: console
 
     $ python setup.py install
+
+If `poetry` is being used (poetry.lock and pyproject.toml files are present), install {{ cookiecutter.project_slug }} with:
+
+.. code-block:: console
+
+    $ poetry install
 
 
 .. _Github repo: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}

@@ -5,7 +5,7 @@
 [![python](https://img.shields.io/badge/python-3.6%2C%203.7%2C%203.8%2C%203.9-blue)]()
 [![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-yellow)]()
 
-**Cookiecutter** template for creating a Python packge using [Poetry](https://python-poetry.org/). See the [Quickstart](#quickstart) guide below for getting started, or for a more guided introduction see [the Whole Game chapter of the Python packages book](https://ubc-mds.github.io/py-pkgs/whole-game.html).
+**Cookiecutter** template for creating a Python packge using [Poetry](https://python-poetry.org/). See the [Quickstart](#quickstart) guide below for getting started, or for a more guided introduction see [the Whole Game chapter of the Python packages book](https://py-pkgs.org/chapters/02-the-whole-game).
 
 -  Free software: BSD license
 

@@ -64,26 +64,28 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
 
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy (it is recommended to do this with a virtual environment). The method of installation will depend on the packaging library being used.
+   For example, if `setuptools` is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
-    $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+   .. code-block:: console
 
-4. Create a branch for local development::
+       $ python setup.py install
+
+   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install {{ cookiecutter.project_slug }} with:
+
+   .. code-block:: console
+
+       $ poetry install
+
+4. Create a branch for local development and make your changes locally::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
-   Now you can make your changes locally.
+5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+   For example, if the package uses the poetry package management library, black formatting style and pytest for testing::
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
-
-    $ flake8 {{ cookiecutter.project_slug }} tests
-    $ python setup.py test or py.test
-    $ tox
-
-   To get flake8 and tox, just pip install them into your virtualenv.
+    $ poetry run black {{ cookiecutter.project_slug }}
+    $ poetry run pytest
 
 6. Commit your changes and push your branch to GitHub::
 
@@ -98,33 +100,9 @@ Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.4, 3.5 and 3.6, and for PyPy. Check
-   https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests
-   and make sure that the tests pass for all supported Python versions.
-
-Tips
-----
-
-To run a subset of tests::
-
-    $ py.test tests.test_{{ cookiecutter.project_slug }}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bumpversion patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.
+1. The pull request should include additional tests if appropriate.
+2. If the pull request adds functionality, the docs should be updated.
+3. The pull request should work for all currently supported operating systems and versions of Python.
 
 Code of Conduct
 ---------------
