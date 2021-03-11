@@ -36,7 +36,7 @@ requires Cookiecutter 1.4.0 or higher)
    
 4. Install the required development dependencies:
    ``` 
-   poetry add --dev pytest pytest-cov codecov python-semantic-release flake8 sphinx sphinxcontrib-napoleon nbsphinx
+   poetry add --dev pytest pytest-cov codecov python-semantic-release flake8 sphinx sphinxcontrib-napoleon nbsphinx ipykernel
    ```
   
 5. Create a remote version control repository on GitHub for this project, and link it to <https://codecov.io/>. Get the repository token from <https://codecov.io/> and record is as a secret on GitHub using the name `CODECOV_TOKEN`.
