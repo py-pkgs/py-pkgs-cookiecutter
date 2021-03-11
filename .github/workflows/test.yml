@@ -33,4 +33,4 @@ jobs:
     # Run tests
     - name: Pytest tests
       run: |
-        pytest
+        pytest tests
