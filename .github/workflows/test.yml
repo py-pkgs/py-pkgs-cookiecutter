@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]  # currently not testing on windows or macos
-        python-version: [3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9]
     steps:
     - uses: actions/checkout@v2
     # Setup
@@ -27,9 +27,9 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install cookiecutter
+    - name: Install dependencie
       run: |
-        pip install cookiecutter
+        pip install -r requirements.txt
     # Run tests
     - name: Pytest tests
       run: |

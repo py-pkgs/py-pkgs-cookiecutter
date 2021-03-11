@@ -1,3 +1,2 @@
 cookiecutter
 pytest
-black
