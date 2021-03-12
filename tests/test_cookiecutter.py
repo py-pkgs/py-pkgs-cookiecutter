@@ -1,5 +1,4 @@
 import json
-import platform
 import subprocess
 from pathlib import Path
 from itertools import product
