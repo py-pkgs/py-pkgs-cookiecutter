@@ -1,5 +1,5 @@
 {
-  "full_name": "Monty Python",
+  "author_name": "Monty Python",
   "github_username": "mpython",
   "project_name": "My Python package",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
