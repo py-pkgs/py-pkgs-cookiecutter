@@ -3,7 +3,7 @@
   "github_username": "mpython",
   "project_name": "My Python package",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-  "project_short_description": "A package for doing great things.",
+  "project_short_description": "A package for doing great things!",
   "version": "0.1.0",
   "python_version": "3.9",
   "open_source_license": [
