@@ -49,21 +49,21 @@ def test_cookiecutter_all_options(
     if open_source_license == "None":
         if include_github_actions == "build":
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 9
+            assert num_items(path) == 10
         elif include_github_actions == "build+deploy":
             assert num_items(path, [".github", "workflows"]) == 2
-            assert num_items(path) == 9
+            assert num_items(path) == 10
         else:
-            assert num_items(path) == 8
+            assert num_items(path) == 9
     else:
         if include_github_actions == "build":
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 10
+            assert num_items(path) == 11
         elif include_github_actions == "build+deploy":
             assert num_items(path, [".github", "workflows"]) == 2
-            assert num_items(path) == 10
+            assert num_items(path) == 11
         else:
-            assert num_items(path) == 9
+            assert num_items(path) == 10
 
 
 @mark.parametrize(
