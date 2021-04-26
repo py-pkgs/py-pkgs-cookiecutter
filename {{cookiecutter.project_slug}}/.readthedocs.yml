@@ -1,7 +1,17 @@
+# Required
+version: 2
+
+# Image to use
 build:
   image: latest
+
+# Configuration
 python:
   version: {{cookiecutter.python_version}}
-  pip_install: true
-  extra_requirements:
-    - docs
+  install:
+    - requirements: docs/requirements.txt
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
+  system_packages: true
