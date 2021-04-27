@@ -7,8 +7,6 @@ Contributing
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
-You can contribute in many ways:
-
 Types of Contributions
 ----------------------
 
@@ -65,7 +63,7 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
 
 3. Install your local copy (it is recommended to do this with a virtual environment). The method of installation will depend on the packaging library being used.
-   For example, if `setuptools` is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:
+   For example, if setuptools is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:
 
    .. code-block:: console
 
@@ -82,10 +80,6 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
     $ git checkout -b name-of-your-bugfix-or-feature
 
 5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
-   For example, if the package uses the poetry package management library, black formatting style and pytest for testing::
-
-    $ poetry run black {{ cookiecutter.project_slug }}
-    $ poetry run pytest
 
 6. Commit your changes and push your branch to GitHub::
 
@@ -106,4 +100,4 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Code of Conduct
 ---------------
-Please note that the {{ cookiecutter.project_name }} project is released with a Contributor Code of Conduct. By contributing to this project you agree to abide by its terms.
+Please note that the {{ cookiecutter.project_name }} project is released with a `Contributor Code of Conduct <conduct.rst>`_. By contributing to this project you agree to abide by its terms.
