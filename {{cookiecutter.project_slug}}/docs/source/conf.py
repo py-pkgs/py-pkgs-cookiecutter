@@ -37,3 +37,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 html_theme = "alabaster"
+html_theme_options = {
+    "description": "{{ cookiecutter.project_short_description }}",
+    "github_user": "{{ cookiecutter.github_username }}",
+    "github_repo": "{{cookiecutter.project_slug}}",
+}
