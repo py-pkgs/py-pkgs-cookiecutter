@@ -36,9 +36,4 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "alabaster"
-html_theme_options = {
-    "description": "{{ cookiecutter.project_short_description }}",
-    "github_user": "{{ cookiecutter.github_username }}",
-    "github_repo": "{{cookiecutter.project_slug}}",
-}
+html_theme = "sphinx_rtd_theme"
