@@ -41,7 +41,8 @@ def test_cookiecutter_all_options(
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 2
     assert num_items(path, ["src/my_python_package"]) == 2
-    assert num_items(path, ["docs"]) == 8
+    assert num_items(path, ["docs"]) == 4
+    assert num_items(path, ["docs/source"]) == 6
     print(f"Checking pair: {open_source_license}, {include_github_actions}")
     if open_source_license == "None":
         if include_github_actions == "build":
