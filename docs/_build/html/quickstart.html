@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quickstart &#8212; cookiecutter-ubc-mds  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Features" href="features.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="index.html">
+  <img src="_static/logo-long.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Home
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="features.html">
+  Features
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Quickstart
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="http://py-pkgs.org">
+  Python Packages Book
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contributing.html">
+  Contributing
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/TBeuzen" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-automated-version-bumping-and-releasing-to-test-pypi">
+   (Optional) Automated version bumping and releasing to test PyPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-push-to-pypi">
+   (Optional) Push to PyPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-continuous-deployment-when-master-branch-protection-is-enabled">
+   (Optional) Continuous deployment when master branch protection is enabled
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p>Install the latest Cookiecutter if you haven’t installed it yet:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">poetry install</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Generate a Python package file and directory structure:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Install the required development dependencies:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry add --dev pytest pytest-cov codecov python-semantic-release flake8 sphinx sphinxcontrib-napoleon nbsphinx ipykernel</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Create a remote version control repository on GitHub for this project, and link it to <a class="reference external" href="https://codecov.io/">https://codecov.io/</a>. Get the repository token from <a class="reference external" href="https://codecov.io/">https://codecov.io/</a> and record is as a secret on GitHub using the name <cite>CODECOV_TOKEN</cite>.</p></li>
+<li><p>Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the <a class="reference external" href="https://py-pkgs.org">Python Packages book</a>.</p></li>
+<li><p>Render your documentation:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry run sphinx-apidoc -f -o docs/source &lt;your_project&gt;</span>
+<span class="prompt1"><span class="nb">cd</span> docs</span>
+<span class="prompt1">poetry run make html</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub!</p></li>
+<li><p>To have your docs appear on Read the Docs, follow the <a class="reference external" href="https://py-pkgs.org/03-how-to-package-a-python#reading-and-rendering-documentation-remotely">instructions in the Python Packages book</a>.</p></li>
+<li><p>When you are satisfied, use poetry to publish your package to testPyPI.</p></li>
+</ol>
+<div class="section" id="optional-automated-version-bumping-and-releasing-to-test-pypi">
+<h2>(Optional) Automated version bumping and releasing to test PyPI<a class="headerlink" href="#optional-automated-version-bumping-and-releasing-to-test-pypi" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="10">
+<li><p>Add the following to the <cite>pyproject.toml</cite> file (substituting &lt;your_project&gt; with the appropriate value):</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.semantic_release]</span>
+<span class="n">version_variable</span> <span class="o">=</span> <span class="s">&quot;&lt;your_project&gt;/__init__.py:__version__&quot;</span>
+<span class="n">version_source</span> <span class="o">=</span> <span class="s">&quot;commit&quot;</span>
+<span class="n">upload_to_pypi</span> <span class="o">=</span> <span class="s">&quot;false&quot;</span>
+<span class="n">patch_without_tag</span> <span class="o">=</span> <span class="s">&quot;true&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the following secrets to the project’s repository on GitHub:</p>
+<ul class="simple">
+<li><p>TEST_PYPI_USERNAME</p></li>
+<li><p>TEST_PYPI_PASSWORD</p></li>
+</ul>
+</li>
+<li><p>Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen! For more details, see the <a class="reference external" href="https://py-pkgs.org">Python Packages book</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="optional-push-to-pypi">
+<h2>(Optional) Push to PyPI<a class="headerlink" href="#optional-push-to-pypi" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="13">
+<li><p>Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME &amp; PYPI_PASSWORD to your project repo as GitHub secrets and change <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml#L74">this line</a> of the release GitHub Actions workflow to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry publish -u <span class="nv">$PYPI_USERNAME</span> -p <span class="nv">$PYPI_PASSWORD</span></span>
+</pre></div></div></li>
+</ol>
+</div>
+<div class="section" id="optional-continuous-deployment-when-master-branch-protection-is-enabled">
+<h2>(Optional) Continuous deployment when master branch protection is enabled<a class="headerlink" href="#optional-continuous-deployment-when-master-branch-protection-is-enabled" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="14">
+<li><p>If you want to use the <cite>deploy.yml</cite> GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to <cite>deploy.yml</cite>. The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run <strong>after</strong> the pull request is merged to master. Therefore, when we bump the versions in the <cite>pyproject.toml</cite> file and the <cite>package/__init__.py</cite> file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!</p>
+<p>What are we to do? The most straightforward thing appears to be to use a bot to briefly turn off master branch protection just before we push the files where we bumped the version, and then use the bot to turn it back on again after pushing. To do this, we will use the <a class="reference external" href="https://github.com/benjefferies/branch-protection-bot">benjefferies/branch-protection-bot action</a>.</p>
+<p>Looking at <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a>, we will add the <cite>branch-protection-bot</cite> action to <strong>turn off</strong> master branch protection after the step named “checkout” but before the step named “Bump package versions”. We will also add the <cite>branch-protection-bot</cite> action to <strong>turn on</strong> master branch protection after the step named “Push package version changes” but before the step named “Get release tag version from package version”.</p>
+<p>Below is the section of our <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a> <strong>before</strong> we add the <cite>branch-protection-bot</cite>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+      <span class="nt">fetch-depth</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bump package versions</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">git config --local user.email &quot;action@github.com&quot;</span>
+      <span class="no">git config --local user.name &quot;GitHub Action&quot;</span>
+      <span class="no">poetry run semantic-release version</span>
+      <span class="no">poetry version $(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+      <span class="no">git commit -m &quot;Bump versions&quot; -a</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Push package version changes</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ad-m/github-push-action@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get release tag version from package version</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">echo ::set-output name=release_tag::$(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+  <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">release</span>
+</pre></div>
+</div>
+<p>Below is the section of our <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a> <strong>after</strong> we add the <cite>branch-protection-bot</cite>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+      <span class="nt">fetch-depth</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Temporarily disable &quot;include administrators&quot; branch protection</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">benjefferies/branch-protection-bot@master</span>
+  <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always()</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">access-token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bump package versions</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">git config --local user.email &quot;action@github.com&quot;</span>
+      <span class="no">git config --local user.name &quot;GitHub Action&quot;</span>
+      <span class="no">poetry run semantic-release version</span>
+      <span class="no">poetry version $(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+      <span class="no">git commit -m &quot;Bump versions&quot; -a</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Push package version changes</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ad-m/github-push-action@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Enable &quot;include administrators&quot; branch protection</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">benjefferies/branch-protection-bot@master</span>
+  <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always()</span>  <span class="c1"># Force to always run this step to ensure &quot;include administrators&quot; is always turned back on</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">access-token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span>
+      <span class="nt">owner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;github_username_or_org&gt;</span>
+      <span class="nt">repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;github_repo_name&gt;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get release tag version from package version</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">echo ::set-output name=release_tag::$(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+  <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">release</span>
+</pre></div>
+</div>
+<p>Finally, to make this work you will need to add one of your team members personal GitHub access tokens as a GitHub secret named <cite>ACCESS_TOKEN</cite> (see <a class="reference external" href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">here</a> for how to get your personal GitHub access token).</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="features.html" title="previous page">Features</a>
+    <a class='right-next' id="next-link" href="contributing.html" title="next page">Contributing</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright .<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

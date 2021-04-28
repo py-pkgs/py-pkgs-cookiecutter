@@ -1,10 +1,6 @@
 # Required
 version: 2
 
-# Image to use
-build:
-  image: latest
-
 # Configuration
 python:
   version: {{cookiecutter.python_version}}

@@ -1,0 +1,5 @@
+ipykernel
+nbsphinx
+sphinx-autoapi
+sphinx-rtd-theme
+sphinx-prompt
