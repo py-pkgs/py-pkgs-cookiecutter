@@ -23,6 +23,7 @@ To get started, see the Quickstart guide below, or for a more guided introductio
    Quickstart <quickstart>
    Python Packages Book <http://py-pkgs.org>
    Contributing <contributing>
+   Conduct <conduct>
 
 .. container:: button
 
