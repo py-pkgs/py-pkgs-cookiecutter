@@ -3,3 +3,4 @@ nbsphinx
 sphinx-autoapi
 sphinx-rtd-theme
 sphinx-prompt
+sphinx-copybutton
