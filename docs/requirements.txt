@@ -1,6 +1,3 @@
-ipykernel
-nbsphinx
-sphinx-autoapi
-sphinx-rtd-theme
+pydata-sphinx-theme
 sphinx-prompt
 sphinx-copybutton
