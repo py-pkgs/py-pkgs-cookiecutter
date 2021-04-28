@@ -24,6 +24,7 @@
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
@@ -32,9 +33,11 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="quickstart.html" />
+    <link rel="next" title="Features" href="features.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,6 +78,12 @@
 </li>
 
 <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="features.html">
+  Features
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="quickstart.html">
   Quickstart
  </a>
@@ -89,12 +98,6 @@
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="contributing.html">
   Contributing
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="conduct.html">
-  Code of Conduct
  </a>
 </li>
 
@@ -163,11 +166,6 @@
    Getting Started
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features">
-   Features
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -198,26 +196,13 @@
 <p><strong>Cookiecutter UBC-MDS</strong> is a cookiecutter template for creating a Python package using <a class="reference external" href="https://python-poetry.org/">poetry</a>. It supplements the <a class="reference external" href="https://py-pkgs.org/">Python Packages</a> book by <a class="reference external" href="https://www.tomasbeuzen.com/">Tomas Beuzen</a> and <a class="reference external" href="http://tiffanytimbers.com/">Tiffany Timbers</a> but can be used independently. It was originally developed for use in the University of British Columbia’s (UBC) <a class="reference external" href="https://masterdatascience.ubc.ca/">Master of Data Science</a> program (MDS).</p>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>To get started, see the [Quickstart](#quickstart) guide below, or for a more guided introduction see <a class="reference external" href="https://py-pkgs.org/">Python Packages</a> book.</p>
+<p>To get started, see the Quickstart guide below, or for a more guided introduction see <a class="reference external" href="https://py-pkgs.org/">Python Packages</a> book.</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="button docutils container">
-<p><a class="reference internal" href="quickstart.html"><span class="doc">Quickstart</span></a> <a class="reference external" href="https://py-pkgs.org/">Python Packages Book</a>
-<a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> <a class="reference internal" href="conduct.html"><span class="doc">Conduct</span></a></p>
+<p><a class="reference internal" href="features.html"><span class="doc">Features</span></a> <a class="reference internal" href="quickstart.html"><span class="doc">Quickstart</span></a>
+<a class="reference external" href="https://py-pkgs.org/">Python Packages Book</a> <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a></p>
 </div>
-</div>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<p>The goal of <strong>Cookiecutter UBC-MDS</strong> is to help quickly and transparently create fully-featured Python packages. It includes the following features:</p>
-<ul class="simple">
-<li><p><strong>pytest</strong> testing: Setup to easily test for Python 3.7 &amp; 3.8 (other Python versions can be added by editing the GitHub Actions workflow file) across ubuntu, mac and windows operating systems</p></li>
-<li><p><strong>GitHub Actions</strong>: Ready for GitHub Actions Continuous Integration testing &amp; Deployment</p></li>
-<li><p><strong>codecov</strong>: Code coverage report and badge using codecov and GitHub Actions</p></li>
-<li><p><strong>Sphinx</strong> docs: Documentation ready for generation with, for
-example, <strong>ReadTheDocs</strong></p></li>
-<li><p><strong>Python-semantic-release</strong>: Pre-configured version bumping upon merging pull request to main</p></li>
-<li><p>Auto-release to <strong>testPyPI</strong> upon merging pull request to main</p></li>
-</ul>
 </div>
 </div>
 
@@ -227,7 +212,7 @@ example, <strong>ReadTheDocs</strong></p></li>
               
               <div class='prev-next-bottom'>
                 
-    <a class='right-next' id="next-link" href="quickstart.html" title="next page">Installation</a>
+    <a class='right-next' id="next-link" href="features.html" title="next page">Features</a>
 
               </div>
               

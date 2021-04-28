@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Installation &#8212; cookiecutter-ubc-mds  documentation</title>
+    <title>Quickstart &#8212; cookiecutter-ubc-mds  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -24,6 +24,7 @@
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
@@ -32,10 +33,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contributing" href="contributing.html" />
-    <link rel="prev" title="Welcome to Cookiecutter UBC-MDS’s documentation!" href="index.html" />
+    <link rel="prev" title="Features" href="features.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,6 +78,12 @@
  </a>
 </li>
 
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="features.html">
+  Features
+ </a>
+</li>
+
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
   Quickstart
@@ -90,12 +99,6 @@
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="contributing.html">
   Contributing
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="conduct.html">
-  Code of Conduct
  </a>
 </li>
 
@@ -160,13 +163,18 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stable-release">
-   Stable release
+  <a class="reference internal nav-link" href="#optional-automated-version-bumping-and-releasing-to-test-pypi">
+   (Optional) Automated version bumping and releasing to test PyPI
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#from-sources">
-   From sources
+  <a class="reference internal nav-link" href="#optional-push-to-pypi">
+   (Optional) Push to PyPI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-continuous-deployment-when-master-branch-protection-is-enabled">
+   (Optional) Continuous deployment when master branch protection is enabled
   </a>
  </li>
 </ul>
@@ -190,38 +198,137 @@
               
               <div>
                 
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="stable-release">
-<h2>Stable release<a class="headerlink" href="#stable-release" title="Permalink to this headline">¶</a></h2>
-<p>To install {{ cookiecutter.project_name }}, run this command in your terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install <span class="o">{{</span> cookiecutter.project_slug <span class="o">}}</span>
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p>Install the latest Cookiecutter if you haven’t installed it yet:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">poetry install</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Generate a Python package file and directory structure:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Install the required development dependencies:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry add --dev pytest pytest-cov codecov python-semantic-release flake8 sphinx sphinxcontrib-napoleon nbsphinx ipykernel</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Create a remote version control repository on GitHub for this project, and link it to <a class="reference external" href="https://codecov.io/">https://codecov.io/</a>. Get the repository token from <a class="reference external" href="https://codecov.io/">https://codecov.io/</a> and record is as a secret on GitHub using the name <cite>CODECOV_TOKEN</cite>.</p></li>
+<li><p>Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the <a class="reference external" href="https://py-pkgs.org">Python Packages book</a>.</p></li>
+<li><p>Render your documentation:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry run sphinx-apidoc -f -o docs/source &lt;your_project&gt;</span>
+<span class="prompt1"><span class="nb">cd</span> docs</span>
+<span class="prompt1">poetry run make html</span>
+</pre></div></div></div></blockquote>
+</li>
+<li><p>Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub!</p></li>
+<li><p>To have your docs appear on Read the Docs, follow the <a class="reference external" href="https://py-pkgs.org/03-how-to-package-a-python#reading-and-rendering-documentation-remotely">instructions in the Python Packages book</a>.</p></li>
+<li><p>When you are satisfied, use poetry to publish your package to testPyPI.</p></li>
+</ol>
+<div class="section" id="optional-automated-version-bumping-and-releasing-to-test-pypi">
+<h2>(Optional) Automated version bumping and releasing to test PyPI<a class="headerlink" href="#optional-automated-version-bumping-and-releasing-to-test-pypi" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="10">
+<li><p>Add the following to the <cite>pyproject.toml</cite> file (substituting &lt;your_project&gt; with the appropriate value):</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.semantic_release]</span>
+<span class="n">version_variable</span> <span class="o">=</span> <span class="s">&quot;&lt;your_project&gt;/__init__.py:__version__&quot;</span>
+<span class="n">version_source</span> <span class="o">=</span> <span class="s">&quot;commit&quot;</span>
+<span class="n">upload_to_pypi</span> <span class="o">=</span> <span class="s">&quot;false&quot;</span>
+<span class="n">patch_without_tag</span> <span class="o">=</span> <span class="s">&quot;true&quot;</span>
 </pre></div>
 </div>
-<p>This is the preferred method to install {{ cookiecutter.project_name }}, as it will always install the most recent stable release.</p>
-<p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, this <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a> can guide
-you through the process.</p>
+</li>
+<li><p>Add the following secrets to the project’s repository on GitHub:</p>
+<ul class="simple">
+<li><p>TEST_PYPI_USERNAME</p></li>
+<li><p>TEST_PYPI_PASSWORD</p></li>
+</ul>
+</li>
+<li><p>Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub and Let the magic happen! For more details, see the <a class="reference external" href="https://py-pkgs.org">Python Packages book</a>.</p></li>
+</ol>
 </div>
-<div class="section" id="from-sources">
-<h2>From sources<a class="headerlink" href="#from-sources" title="Permalink to this headline">¶</a></h2>
-<p>The sources for {{ cookiecutter.project_name }} can be downloaded from the <a class="reference external" href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}">Github repo</a>.</p>
-<p>You can either clone the public repository:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone git://github.com/<span class="o">{{</span> cookiecutter.github_username <span class="o">}}</span>/<span class="o">{{</span> cookiecutter.project_slug <span class="o">}}</span>
+<div class="section" id="optional-push-to-pypi">
+<h2>(Optional) Push to PyPI<a class="headerlink" href="#optional-push-to-pypi" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="13">
+<li><p>Once you are happy with the state of your package, and you want to publish to PyPI as opposed to testPyPI, all you need to do is add your PYPI_USERNAME &amp; PYPI_PASSWORD to your project repo as GitHub secrets and change <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/bd8cb34f83d6341c411954322354031602606b80/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml#L74">this line</a> of the release GitHub Actions workflow to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry publish -u <span class="nv">$PYPI_USERNAME</span> -p <span class="nv">$PYPI_PASSWORD</span></span>
+</pre></div></div></li>
+</ol>
+</div>
+<div class="section" id="optional-continuous-deployment-when-master-branch-protection-is-enabled">
+<h2>(Optional) Continuous deployment when master branch protection is enabled<a class="headerlink" href="#optional-continuous-deployment-when-master-branch-protection-is-enabled" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="14">
+<li><p>If you want to use the <cite>deploy.yml</cite> GitHub Actions workflow (which performs automated version bumping, package building and publishing to (test) PyPI) provided by this Cookicutter template with a repository where you have enabled master branch protection (and also applied this rule to administrators), you will need to add two addtional steps to <cite>deploy.yml</cite>. The reason for this, is that this workflow (which bumps versions and deploy the package) is triggered to run <strong>after</strong> the pull request is merged to master. Therefore, when we bump the versions in the <cite>pyproject.toml</cite> file and the <cite>package/__init__.py</cite> file (the two places in our package where the version must be stored) we need to push these changes to the master branch - however this is problematic given that we have set-up master branch protection!</p>
+<p>What are we to do? The most straightforward thing appears to be to use a bot to briefly turn off master branch protection just before we push the files where we bumped the version, and then use the bot to turn it back on again after pushing. To do this, we will use the <a class="reference external" href="https://github.com/benjefferies/branch-protection-bot">benjefferies/branch-protection-bot action</a>.</p>
+<p>Looking at <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a>, we will add the <cite>branch-protection-bot</cite> action to <strong>turn off</strong> master branch protection after the step named “checkout” but before the step named “Bump package versions”. We will also add the <cite>branch-protection-bot</cite> action to <strong>turn on</strong> master branch protection after the step named “Push package version changes” but before the step named “Get release tag version from package version”.</p>
+<p>Below is the section of our <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a> <strong>before</strong> we add the <cite>branch-protection-bot</cite>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+      <span class="nt">fetch-depth</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bump package versions</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">git config --local user.email &quot;action@github.com&quot;</span>
+      <span class="no">git config --local user.name &quot;GitHub Action&quot;</span>
+      <span class="no">poetry run semantic-release version</span>
+      <span class="no">poetry version $(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+      <span class="no">git commit -m &quot;Bump versions&quot; -a</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Push package version changes</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ad-m/github-push-action@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get release tag version from package version</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">echo ::set-output name=release_tag::$(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+  <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">release</span>
 </pre></div>
 </div>
-<p>Or download the <a class="reference external" href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}/tarball/master">tarball</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl  -OL https://github.com/<span class="o">{{</span> cookiecutter.github_username <span class="o">}}</span>/<span class="o">{{</span> cookiecutter.project_slug <span class="o">}}</span>/tarball/main
+<p>Below is the section of our <a class="reference external" href="https://github.com/UBC-MDS/cookiecutter-ubc-mds/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.github/workflows/deploy.yml">deploy.yml</a> <strong>after</strong> we add the <cite>branch-protection-bot</cite>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+      <span class="nt">fetch-depth</span><span class="p">:</span> <span class="s">&#39;0&#39;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Temporarily disable &quot;include administrators&quot; branch protection</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">benjefferies/branch-protection-bot@master</span>
+  <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always()</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">access-token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Bump package versions</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">git config --local user.email &quot;action@github.com&quot;</span>
+      <span class="no">git config --local user.name &quot;GitHub Action&quot;</span>
+      <span class="no">poetry run semantic-release version</span>
+      <span class="no">poetry version $(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+      <span class="no">git commit -m &quot;Bump versions&quot; -a</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Push package version changes</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ad-m/github-push-action@master</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">github_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Enable &quot;include administrators&quot; branch protection</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">benjefferies/branch-protection-bot@master</span>
+  <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always()</span>  <span class="c1"># Force to always run this step to ensure &quot;include administrators&quot; is always turned back on</span>
+  <span class="nt">with</span><span class="p">:</span>
+      <span class="nt">access-token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ACCESS_TOKEN }}</span>
+      <span class="nt">owner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;github_username_or_org&gt;</span>
+      <span class="nt">repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;github_repo_name&gt;</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get release tag version from package version</span>
+  <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">echo ::set-output name=release_tag::$(grep &quot;version&quot; */__init__.py | cut -d &quot;&#39;&quot; -f 2 | cut -d &#39;&quot;&#39; -f 2)</span>
+  <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">release</span>
 </pre></div>
 </div>
-<p>Once you have a copy of the source, you can install it. The method of installation will depend on the packaging library being used.</p>
-<p>For example, if <cite>setuptools</cite> is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python setup.py install
-</pre></div>
-</div>
-<p>If <cite>poetry</cite> is being used (poetry.lock and pyproject.toml files are present), install {{ cookiecutter.project_slug }} with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry install
-</pre></div>
-</div>
+<p>Finally, to make this work you will need to add one of your team members personal GitHub access tokens as a GitHub secret named <cite>ACCESS_TOKEN</cite> (see <a class="reference external" href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">here</a> for how to get your personal GitHub access token).</p>
+</li>
+</ol>
 </div>
 </div>
 
@@ -231,7 +338,7 @@ you through the process.</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Welcome to Cookiecutter UBC-MDS’s documentation!</a>
+    <a class='left-prev' id="prev-link" href="features.html" title="previous page">Features</a>
     <a class='right-next' id="next-link" href="contributing.html" title="next page">Contributing</a>
 
               </div>
