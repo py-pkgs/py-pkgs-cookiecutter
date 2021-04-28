@@ -1,0 +1,50 @@
+Welcome to Cookiecutter UBC-MDS's documentation!
+================================================
+
+.. image:: _static/logo.png
+  :width: 200
+  :alt: The Cookiecutter UBC-MDS logo
+  :align: center
+
+|
+
+**Cookiecutter UBC-MDS** is a cookiecutter template for creating a Python package using `poetry`_. It supplements the `Python Packages`_ book by `Tomas Beuzen`_ and `Tiffany Timbers`_ but can be used independently. It was originally developed for use in the University of British Columbia's (UBC) `Master of Data Science`_ program (MDS).
+
+Getting Started
+---------------
+
+To get started, see the Quickstart guide below, or for a more guided introduction see `Python Packages`_ book.
+
+.. toctree::
+   :hidden:
+
+   Home <self>
+   Quickstart <quickstart>
+   Python Packages Book <http://py-pkgs.org>
+   Contributing <contributing>
+   Code of Conduct <conduct>
+
+.. container:: button
+
+   :doc:`Quickstart <quickstart>` `Python Packages Book <https://py-pkgs.org/>`_
+   :doc:`Contributing <contributing>` :doc:`Conduct <conduct>`
+
+
+Features
+--------
+
+The goal of **Cookiecutter UBC-MDS** is to help quickly and transparently create fully-featured Python packages. It includes the following features:
+
+-  **pytest** testing: Setup to easily test for Python 3.7 & 3.8 (other Python versions can be added by editing the GitHub Actions workflow file) across ubuntu, mac and windows operating systems
+-  **GitHub Actions**: Ready for GitHub Actions Continuous Integration testing & Deployment
+-  **codecov**: Code coverage report and badge using codecov and GitHub Actions
+-  **Sphinx** docs: Documentation ready for generation with, for
+   example, **ReadTheDocs**
+-  **Python-semantic-release**: Pre-configured version bumping upon merging pull request to main
+-  Auto-release to **testPyPI** upon merging pull request to main
+
+.. _poetry: https://python-poetry.org/
+.. _Python Packages: https://py-pkgs.org/
+.. _Tomas Beuzen: https://www.tomasbeuzen.com/
+.. _Tiffany Timbers: http://tiffanytimbers.com/
+.. _Master of Data Science: https://masterdatascience.ubc.ca/
