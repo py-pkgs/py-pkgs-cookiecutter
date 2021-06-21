@@ -9,10 +9,10 @@
 
 **Cookiecutter UBC-MDS** is a cookiecutter template for creating a Python package using [poetry](https://python-poetry.org/). It supplements the [Python Packages](https://py-pkgs.org/) book by [Tomas Beuzen](https://www.tomasbeuzen.com/) and [Tiffany Timbers](http://tiffanytimbers.com/) but can be used independently. It was originally developed for use in the University of British Columbia's (UBC) [Master of Data Science](https://masterdatascience.ubc.ca/) program (MDS).
 
-Please check out the [documentation](https://cookiecutter-ubc-mds.readthedocs.io/en/latest/) to find out how to use this cookiecutter. If you know what you're doing, here's the one-liner:
+Please check out the [documentation](https://cookiecutter-ubc-mds.readthedocs.io/en/latest/) to find out how to use this cookiecutter. If you know what you're doing, here's the one-liner to run in your terminal:
 
 ```shell
-$ cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
+cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
 ```
 
 ## Contributors
