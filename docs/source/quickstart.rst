@@ -4,29 +4,30 @@
 Quickstart
 ==========
 
-1. Install the latest Cookiecutter if you haven't installed it yet:
+1. Install poetry following the [instructions in the documentation](https://python-poetry.org/docs/#installation)
+2. Install [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.2/):
 
     .. prompt:: bash
+        
+        pip install cookiecutter
 
-        poetry install
-
-2. Generate a Python package file and directory structure:
+3. Generate a Python package file and directory structure:
 
     .. prompt:: bash
 
         cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
    
-3. Install the required development dependencies:
+4. Install the required development dependencies:
 
     .. prompt:: bash
 
         poetry add --dev pytest pytest-cov codecov python-semantic-release flake8 sphinx sphinxcontrib-napoleon nbsphinx ipykernel
   
-4. Create a remote version control repository on GitHub for this project, and link it to `<https://codecov.io/>`_. Get the repository token from `<https://codecov.io/>`_ and record is as a secret on GitHub using the name `CODECOV_TOKEN`.
+5. Create a remote version control repository on GitHub for this project, and link it to `<https://codecov.io/>`_. Get the repository token from `<https://codecov.io/>`_ and record is as a secret on GitHub using the name `CODECOV_TOKEN`.
     
-5. Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the `Python Packages book <https://py-pkgs.org>`_.
+6. Write the code and tests for your Python package! And use Python poetry to install, add dependencies and test your package locally. For more details, see the `Python Packages book <https://py-pkgs.org>`_.
 
-6. Render your documentation:
+7. Render your documentation:
 
     .. prompt:: bash
 
@@ -34,11 +35,11 @@ Quickstart
         cd docs
         poetry run make html
 
-7. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
+8. Put your local files under version control with Git, add the GitHub repository you set up as the remote and push your changes to GitHub! 
 
-8. To have your docs appear on Read the Docs, follow the `instructions in the Python Packages book <https://py-pkgs.org/03-how-to-package-a-python#reading-and-rendering-documentation-remotely>`_.
+9.  To have your docs appear on Read the Docs, follow the `instructions in the Python Packages book <https://py-pkgs.org/03-how-to-package-a-python#reading-and-rendering-documentation-remotely>`_.
 
-9. When you are satisfied, use poetry to publish your package to testPyPI.
+10. When you are satisfied, use poetry to publish your package to testPyPI.
 
 
 (Optional) Automated version bumping and releasing to test PyPI
