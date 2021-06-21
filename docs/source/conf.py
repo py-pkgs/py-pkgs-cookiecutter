@@ -27,7 +27,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # a list of builtin themes.
 #
 def setup(app):
-    app.add_stylesheet("custom.css")  # may also be an URL
+    app.add_css_file("custom.css")  # may also be an URL
 
 
 html_static_path = ["_static"]
