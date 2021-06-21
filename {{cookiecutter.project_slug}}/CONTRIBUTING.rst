@@ -36,9 +36,7 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-{{ cookiecutter.project_name }} could always use more documentation, whether as part of the
-official {{ cookiecutter.project_name }} docs, in docstrings, or even on the web in blog posts,
-articles, and such.
+{{ cookiecutter.project_name }} could always use more documentation, whether as part of the official {{ cookiecutter.project_name }} docs, in docstrings, or even on the web in blog posts, articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
@@ -69,7 +67,7 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
 
        $ python setup.py install
 
-   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install {{ cookiecutter.project_slug }} with:
+   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install `{{ cookiecutter.project_slug }}` with:
 
    .. code-block:: console
 
