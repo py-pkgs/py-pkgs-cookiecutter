@@ -1,6 +1,5 @@
 .. highlight:: shell
 
-============
 Contributing
 ============
 
@@ -11,7 +10,7 @@ Types of Contributions
 ----------------------
 
 Report Bugs
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Report bugs at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
 
@@ -22,24 +21,26 @@ If you are reporting a bug, please include:
 * Detailed steps to reproduce the bug.
 
 Fix Bugs
-~~~~~~~~
+^^^^^^^^
 
 Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
 wanted" is open to whoever wants to implement it.
 
 Implement Features
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 Look through the GitHub issues for features. Anything tagged with "enhancement"
 and "help wanted" is open to whoever wants to implement it.
 
 Write Documentation
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
-{{ cookiecutter.project_name }} could always use more documentation, whether as part of the official {{ cookiecutter.project_name }} docs, in docstrings, or even on the web in blog posts, articles, and such.
+You can never have enough documentation! Please feel free to contribute to any
+part of the documentation, such as the official docs, docstrings, or even 
+on the web in blog posts, articles, and such.
 
 Submit Feedback
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
 
@@ -53,21 +54,21 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for local development.
+Ready to contribute? Here's how to set up ``{{ cookiecutter.project_slug }}`` for local development.
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitHub.
+1. Fork the ``{{ cookiecutter.project_slug }}`` repo on GitHub.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
 
 3. Install your local copy (it is recommended to do this with a virtual environment). The method of installation will depend on the packaging library being used.
-   For example, if setuptools is being used (a setup.py file is present), install {{ cookiecutter.project_slug }} with:
+   For example, if setuptools is being used (a setup.py file is present), install ``{{ cookiecutter.project_slug }}`` with:
 
    .. code-block:: console
 
        $ python setup.py install
 
-   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install `{{ cookiecutter.project_slug }}` with:
+   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install ``{{ cookiecutter.project_slug }}`` with:
 
    .. code-block:: console
 
@@ -98,4 +99,6 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Code of Conduct
 ---------------
-Please note that the {{ cookiecutter.project_name }} project is released with a `Contributor Code of Conduct <conduct.rst>`_. By contributing to this project you agree to abide by its terms.
+Please note that the ``{{ cookiecutter.project_name }}`` project is released with a 
+`Contributor Code of Conduct <conduct.rst>`_. By contributing to this project you agree 
+to abide by its terms.
