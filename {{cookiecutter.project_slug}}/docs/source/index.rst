@@ -11,5 +11,6 @@ To get started, check out the sections below:
 
    installation
    usage
+   changelog
    contributing
    conduct

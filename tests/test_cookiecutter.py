@@ -42,26 +42,26 @@ def test_cookiecutter_all_options(
     assert num_items(path, ["tests"]) == 2
     assert num_items(path, ["src/my_python_package"]) == 2
     assert num_items(path, ["docs"]) == 4
-    assert num_items(path, ["docs/source"]) == 6
+    assert num_items(path, ["docs/source"]) == 7
     print(f"Checking pair: {open_source_license}, {include_github_actions}")
     if open_source_license == "None":
         if include_github_actions == "build":
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 10
+            assert num_items(path) == 11
         elif include_github_actions == "build+deploy":
             assert num_items(path, [".github", "workflows"]) == 2
-            assert num_items(path) == 10
+            assert num_items(path) == 11
         else:
-            assert num_items(path) == 9
+            assert num_items(path) == 10
     else:
         if include_github_actions == "build":
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 11
+            assert num_items(path) == 12
         elif include_github_actions == "build+deploy":
             assert num_items(path, [".github", "workflows"]) == 2
-            assert num_items(path) == 11
+            assert num_items(path) == 12
         else:
-            assert num_items(path) == 10
+            assert num_items(path) == 11
 
 
 @mark.parametrize(
