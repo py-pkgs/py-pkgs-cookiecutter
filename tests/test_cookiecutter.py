@@ -39,7 +39,7 @@ def test_cookiecutter_all_options(
     path = Path(base_command[1]).joinpath("my_python_package")
     result = subprocess.run(base_command[0] + params, shell=True)
     assert result.returncode == 0
-    assert num_items(path, ["tests"]) == 2
+    assert num_items(path, ["tests"]) == 1
     assert num_items(path, ["src/my_python_package"]) == 2
     assert num_items(path, ["docs"]) == 4
     assert num_items(path, ["docs/source"]) == 7
