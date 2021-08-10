@@ -20,6 +20,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "myst_nb",
+    "sphinx_copybutton",
 ]
 autoapi_type = "python"
 autoapi_dirs = ["../../src"]
