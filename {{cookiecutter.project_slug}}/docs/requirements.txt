@@ -1,4 +1,3 @@
-ipykernel
-nbsphinx
+myst-nb
 sphinx-autoapi
 sphinx-rtd-theme
