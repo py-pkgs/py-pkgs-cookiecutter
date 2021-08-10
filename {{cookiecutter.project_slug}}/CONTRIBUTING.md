@@ -1,18 +1,13 @@
-.. highlight:: shell
-
-Contributing
-============
+# Contributing
 
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
-Types of Contributions
-----------------------
+## Types of Contributions
 
-Report Bugs
-^^^^^^^^^^^
+### Report Bugs
 
-Report bugs at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+Report bugs at <https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues>.
 
 If you are reporting a bug, please include:
 
@@ -20,29 +15,25 @@ If you are reporting a bug, please include:
 * Any details about your local setup that might be helpful in troubleshooting.
 * Detailed steps to reproduce the bug.
 
-Fix Bugs
-^^^^^^^^
+### Fix Bugs
 
 Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
 wanted" is open to whoever wants to implement it.
 
-Implement Features
-^^^^^^^^^^^^^^^^^^
+### Implement Features
 
 Look through the GitHub issues for features. Anything tagged with "enhancement"
 and "help wanted" is open to whoever wants to implement it.
 
-Write Documentation
-^^^^^^^^^^^^^^^^^^^
+### Write Documentation
 
 You can never have enough documentation! Please feel free to contribute to any
 part of the documentation, such as the official docs, docstrings, or even 
 on the web in blog posts, articles, and such.
 
-Submit Feedback
-^^^^^^^^^^^^^^^
+### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+The best way to send feedback is to file an issue at <https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues>.
 
 If you are proposing a feature:
 
@@ -51,45 +42,49 @@ If you are proposing a feature:
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
-Get Started!
-------------
+## Get Started!
 
-Ready to contribute? Here's how to set up ``{{ cookiecutter.project_slug }}`` for local development.
+Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for local development.
 
-1. Fork the ``{{ cookiecutter.project_slug }}`` repo on GitHub.
-2. Clone your fork locally::
+1. Fork the `{{ cookiecutter.project_slug }}` repo on GitHub.
+2. Clone your fork locally:
 
+    ```console
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
+    ```
 
 3. Install your local copy (it is recommended to do this with a virtual environment). The method of installation will depend on the packaging library being used.
-   For example, if setuptools is being used (a setup.py file is present), install ``{{ cookiecutter.project_slug }}`` with:
+   For example, if setuptools is being used (a setup.py file is present), install `{{ cookiecutter.project_slug }}` with:
 
-   .. code-block:: console
+    ```console
+    $ python setup.py install
+    ```
 
-       $ python setup.py install
+   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install `{{ cookiecutter.project_slug }}` with:
 
-   If `poetry` is being used (poetry.lock and pyproject.toml files are present), install ``{{ cookiecutter.project_slug }}`` with:
-
-   .. code-block:: console
-
-       $ poetry install
+    ```console
+    $ poetry install
+    ```
 
 4. Create a branch for local development and make your changes locally::
 
+    ```console
     $ git checkout -b name-of-your-bugfix-or-feature
+    ```
 
 5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
 6. Commit your changes and push your branch to GitHub::
 
+    ```console
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
+    ```
 
 7. Submit a pull request through the GitHub website.
 
-Pull Request Guidelines
------------------------
+## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
@@ -97,8 +92,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated.
 3. The pull request should work for all currently supported operating systems and versions of Python.
 
-Code of Conduct
----------------
-Please note that the ``{{ cookiecutter.project_name }}`` project is released with a 
-`Contributor Code of Conduct <conduct.rst>`_. By contributing to this project you agree 
-to abide by its terms.
+## Code of Conduct
+
+Please note that the `{{ cookiecutter.project_name }}` project is released with a 
+Code of Conduct. By contributing to this project you agree to abide by its terms.
