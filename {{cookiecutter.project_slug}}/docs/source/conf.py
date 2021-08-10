@@ -19,12 +19,11 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "nbsphinx",
+    "myst_nb",
 ]
 autoapi_type = "python"
 autoapi_dirs = ["../../src"]
 napoleon_numpy_docstring = True
-nbsphinx_execute = "always"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
