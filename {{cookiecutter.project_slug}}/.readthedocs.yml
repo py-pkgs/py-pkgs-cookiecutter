@@ -3,7 +3,7 @@ version: 2
 
 # Image to use
 build:
-  image: latest
+  image: testing # using testing image for now, until 3.9 is supported on "latest"
 
 # Configuration
 python:
