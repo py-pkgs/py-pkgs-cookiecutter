@@ -1,9 +1,7 @@
 /* colors */
 
-:root {
-    --pst-color-primary: 123, 63, 0;
-    --pst-color-active-navigation: 123, 63, 0;
-    --pst-color-h2: var(--color-text-base);
+h1, h2 {
+    color: #324d70;    
 }
 
 /* buttons */
@@ -14,7 +12,7 @@
     border: 1px solid #bbbbbb;
     display: inline-block;
     cursor: pointer;
-    color: #7B3F00;
+    color: #1066d6;
     /* font-weight: bold; */
     padding: 1em 1em;
     text-align: center;
@@ -25,8 +23,8 @@
 }
 
 .button>p>a:hover {
-    border-color: #5a2f00;
-    color: #e32e00;
+    border-color: #324d70;
+    color: #324d70;
 }
 
 .button>p>a:active {

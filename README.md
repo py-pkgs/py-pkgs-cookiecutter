@@ -1,24 +1,72 @@
-# Cookiecutter UBC-MDS
+# Py-Pkgs-Cookiecutter: A cookiecutter template for Python packages
 
-[![Documentation Status](https://readthedocs.org/projects/cookiecutter-ubc-mds/badge/?version=latest)](https://cookiecutter-ubc-mds.readthedocs.io/en/latest/?badge=latest)
-![tests](https://github.com/UBC-MDS/cookiecutter-ubc-mds/workflows/test/badge.svg)
-[![release](https://img.shields.io/github/release/UBC-MDS/cookiecutter-ubc-mds.svg)](https://github.com/UBC-MDS/cookiecutter-ubc-mds/releases)
-[![python](https://img.shields.io/badge/python-3.6%2C%203.7%2C%203.8%2C%203.9-blue)]()
-[![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-yellow)]()
+[![Documentation Status](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest)](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/?badge=latest)
+![tests](https://github.com/py-pkgs/py-pkgs-cookiecutter/workflows/test/badge.svg)
+[![release](https://img.shields.io/github/release/py-pkgs/py-pkgs-cookiecutter.svg)](https://github.com/py-pkgs/py-pkgs-cookiecutter/releases)
+[![python](https://img.shields.io/badge/python-%5E3.8-blue)]()
+[![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-purple)]()
+
+<p align="center">
+  <img src="docs/source/_static/hex.png" width="220" alt="The Py-Pkgs-Cookiecutter logo.">
+</p>
+
+<br>
+
+`py-pkgs-cookiecutter` is a [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) template for creating a fully-featured Python package using [`poetry`](https://python-poetry.org). It supplements the [Python Packages book](https://py-pkgs.org) by Tomas Beuzen and Tiffany Timbers but can be used independently.
+
+## Usage
+
+Please see the [documentation](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest) for more detail on using `py-pkgs-cookiecutter`. We provide the fundamental steps below:
+
+1. Install [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/):
+
+    ```bash
+    pip install cookiecutter
+    ```
+
+2. Generate a Python package structure using [`py-pkgs-cookiecutter`](https://github.com/py-pkgs/py-pkgs-cookiecutter):
+
+    ```bash
+    cookiecutter https://github.com/py-pkgs/py-pkgs-cookiecutter.git
+    ```
+
+3. After responding to the prompts you should have a directory structure similar to that shown below. To learn more about the contents of this directory structure, please see the `py-pkgs-cookiecutter` [documentation](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest).
+
+    ```text
+    pkg
+    ├── .github                    ┐
+    │   └── workflows              │ GitHub Actions workflow
+    │       └── ci-cd.yml          ┘
+    ├── .gitignore                 ┐
+    ├── .readthedocs.yml           │
+    ├── CHANGELOG.md               │
+    ├── CONDUCT.md                 │
+    ├── CONTRIBUTING.md            │
+    ├── docs                       │
+    │   ├── make.bat               │
+    │   ├── Makefile               │
+    │   ├── requirements.txt       │
+    │   ├── changelog.md           │
+    │   ├── conduct.md             │
+    │   ├── conf.py                │ Package documentation
+    │   ├── contributing.md        │
+    │   ├── index.md               │
+    │   └── usage.ipynb            │
+    ├── LICENSE                    │
+    ├── README.md                  ┘
+    ├── pyproject.toml             ┐ 
+    ├── src                        │
+    │   └── pkg                    │ Package source code, metadata,
+    │       ├── __init__.py        │ and build instructions 
+    │       └── pkg.py             ┘
+    └── tests                      ┐
+        └── test_pkg.py            ┘ Package tests
+    ```
+
+## Contributing
 
 
-**Cookiecutter UBC-MDS** is a cookiecutter template for creating a Python package using [poetry](https://python-poetry.org/). It supplements the [Python Packages](https://py-pkgs.org/) book by [Tomas Beuzen](https://www.tomasbeuzen.com/) and [Tiffany Timbers](http://tiffanytimbers.com/) but can be used independently. It was originally developed for use in the University of British Columbia's (UBC) [Master of Data Science](https://masterdatascience.ubc.ca/) program (MDS).
 
-Please check out the [documentation](https://cookiecutter-ubc-mds.readthedocs.io/en/latest/) to find out how to use this cookiecutter. If you know what you're doing, here's the one-liner to run in your terminal:
+## Acknowledgements
 
-```shell
-cookiecutter https://github.com/UBC-MDS/cookiecutter-ubc-mds.git
-```
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/cookiecutter-ubc-mds/graphs/contributors).
-
-## Credits
-
-This template was modified from the [pyOpenSci/cookiecutter-pyopensci](https://github.com/pyOpenSci/cookiecutter-pyopensci) project template and the [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
+`py-pkgs-cookiecutter` was originally developed for use in the University of British Columbia's (UBC) `Master of Data Science`_ program (MDS). It was inspired by the pyOpenSci `cookiecutter` [template](https://github.com/pyOpenSci/cookiecutter-pyopensci).

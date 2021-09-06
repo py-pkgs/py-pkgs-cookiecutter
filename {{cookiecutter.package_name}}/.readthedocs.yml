@@ -7,7 +7,7 @@ build:
 
 # Configuration
 python:
-  version: 3.8
+  version: {{cookiecutter.python_version}}
   install:
     - requirements: docs/requirements.txt
     - method: pip
