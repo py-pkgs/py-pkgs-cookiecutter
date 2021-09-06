@@ -3,12 +3,14 @@ version: 2
 
 # Image to use
 build:
-  image: testing
+  image: latest
 
-# Configuration
+# Build from the docs/ directory with Sphinx
+sphinx:
+  configuration: docs/source/conf.py
+
+# Explicitly set the version of Python and its requirements
 python:
   version: 3.8
   install:
     - requirements: docs/requirements.txt
-    - method: pip
-      path: .
