@@ -65,7 +65,11 @@ Please see the [documentation](https://readthedocs.org/projects/py-pkgs-cookiecu
 
 ## Contributing
 
+Interested in contributing? Check out the [Contributing Guidelines](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/contributing.html). Please note that this project is released with a [Code of Conduct](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/conduct.html). By contributing to this project, you agree to abide by its terms.
 
+## License
+
+`py-pkgs-cookiecutter` was created by Tomas Beuzen and Tiffany Timbers. It is licensed under the terms of the BSD license.
 
 ## Acknowledgements
 
