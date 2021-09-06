@@ -1,6 +1,6 @@
 # Py-Pkgs-Cookiecutter: A cookiecutter template for Python packages
 
-[![Documentation Status](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest)](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest)](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/)
 ![tests](https://github.com/py-pkgs/py-pkgs-cookiecutter/workflows/test/badge.svg)
 [![release](https://img.shields.io/github/release/py-pkgs/py-pkgs-cookiecutter.svg)](https://github.com/py-pkgs/py-pkgs-cookiecutter/releases)
 [![python](https://img.shields.io/badge/python-%5E3.8-blue)]()
@@ -16,7 +16,7 @@
 
 ## Usage
 
-Please see the [documentation](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest) for more detail on using `py-pkgs-cookiecutter`. We provide the fundamental steps below:
+Please see the [documentation](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/) for more detail on using `py-pkgs-cookiecutter`. We provide the fundamental steps below:
 
 1. Install [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/):
 
@@ -30,7 +30,7 @@ Please see the [documentation](https://readthedocs.org/projects/py-pkgs-cookiecu
     cookiecutter https://github.com/py-pkgs/py-pkgs-cookiecutter.git
     ```
 
-3. After responding to the prompts you should have a directory structure similar to that shown below. To learn more about the contents of this directory structure, please see the `py-pkgs-cookiecutter` [documentation](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest).
+3. After responding to the prompts you should have a directory structure similar to that shown below. To learn more about the contents of this directory structure, please see the `py-pkgs-cookiecutter` [documentation](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/).
 
     ```text
     pkg
