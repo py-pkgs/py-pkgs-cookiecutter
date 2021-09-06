@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]  # currently not testing on windows or macos
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.8, 3.9]
     steps:
     - uses: actions/checkout@v2
     # Setup
@@ -33,4 +33,4 @@ jobs:
     # Run tests
     - name: Pytest tests
       run: |
-        pytest tests
+        pytest tests/

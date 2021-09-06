@@ -1,4 +1,0 @@
-myst-nb
-sphinx-autoapi
-sphinx-rtd-theme
-sphinx-copybutton

@@ -36,49 +36,22 @@ def test_cookiecutter_all_options(
     base_command, open_source_license, include_github_actions
 ):
     params = f" open_source_license='{open_source_license}' include_github_actions={include_github_actions}"
-    path = Path(base_command[1]).joinpath("my_python_package")
+    path = Path(base_command[1]).joinpath("mypkg")
     result = subprocess.run(base_command[0] + params, shell=True)
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 1
-    assert num_items(path, ["src/my_python_package"]) == 2
-    assert num_items(path, ["docs"]) == 4
-    assert num_items(path, ["docs/source"]) == 7
+    assert num_items(path, ["src/mypkg"]) == 2
+    assert num_items(path, ["docs"]) == 9
     print(f"Checking pair: {open_source_license}, {include_github_actions}")
     if open_source_license == "None":
-        if include_github_actions == "build":
+        if include_github_actions in ["ci", "cd"]:
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 11
-        elif include_github_actions == "build+deploy":
-            assert num_items(path, [".github", "workflows"]) == 2
             assert num_items(path) == 11
         else:
             assert num_items(path) == 10
     else:
-        if include_github_actions == "build":
+        if include_github_actions in ["ci", "cd"]:
             assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 12
-        elif include_github_actions == "build+deploy":
-            assert num_items(path, [".github", "workflows"]) == 2
             assert num_items(path) == 12
         else:
             assert num_items(path) == 11
-
-
-@mark.parametrize(
-    "github_username,include_github_actions,msg",
-    [
-        ("fake_captainjupyter_fake", "no", "WARNING"),
-        ("fake_captainjupyter_fake", "build", "WARNING"),
-        ("fake_captainjupyter_fake", "build+deploy", "WARNING"),
-    ],
-)
-def test_warning_message(base_command, github_username, include_github_actions, msg):
-    result = subprocess.run(
-        base_command[0]
-        + f" github_username={github_username} include_github_actions={include_github_actions}",
-        shell=True,
-        capture_output=True,
-    )
-    print(result.stdout.decode("ascii"))
-    assert result.returncode == 0
-    assert msg in result.stdout.decode("ascii")
