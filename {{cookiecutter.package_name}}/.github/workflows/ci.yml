@@ -21,16 +21,16 @@ jobs:
     - uses: actions/checkout@v2
     # Step 4. Install poetry
     - uses: snok/install-poetry@v1
-    # Step 5. Install our pycounts package
+    # Step 5. Install our package
     - name: Install package
       run: poetry install
-    # Step 6. Run tests for pycounts
+    # Step 6. Run tests for package
     - name: Test with pytest
-      run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
+      run: poetry run pytest tests/ --cov={{ cookiecutter.package_name }} --cov-report=xml
     # Step 7. Use Codecov to track coverage
     - uses: codecov/codecov-action@v2
       with:
-        file: ./coverage.xml    # coverage report
+        files: ./coverage.xml   # coverage report
         fail_ci_if_error: true  # terminate workflow if there's an error
     # Step 8. Build documentation
     - name: Build documentation
