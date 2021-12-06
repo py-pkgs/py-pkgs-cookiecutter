@@ -17,6 +17,6 @@
   "include_github_actions": [
     "no",
     "ci",
-    "cd"
+    "ci+cd"
   ]
 }

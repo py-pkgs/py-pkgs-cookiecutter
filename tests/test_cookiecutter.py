@@ -44,13 +44,13 @@ def test_cookiecutter_all_options(
     assert num_items(path, ["docs"]) == 9
     print(f"Checking pair: {open_source_license}, {include_github_actions}")
     if open_source_license == "None":
-        if include_github_actions in ["ci", "cd"]:
+        if include_github_actions in ["ci", "ci+cd"]:
             assert num_items(path, [".github", "workflows"]) == 1
             assert num_items(path) == 11
         else:
             assert num_items(path) == 10
     else:
-        if include_github_actions in ["ci", "cd"]:
+        if include_github_actions in ["ci", "ci+cd"]:
             assert num_items(path, [".github", "workflows"]) == 1
             assert num_items(path) == 12
         else:
