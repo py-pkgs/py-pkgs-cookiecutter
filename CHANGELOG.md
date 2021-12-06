@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.1 (06/12/2021)
+
+### Fix
+
+- Removed hard-coded "pycounts" package name from CI/CD files.
+- Renamed "cd" option to "ci+cd"
+
 ## v0.2.0 (06/09/2021)
 
 ### Breaking changes
