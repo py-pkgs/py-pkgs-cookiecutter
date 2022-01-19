@@ -1,4 +1,4 @@
 myst-parser
-pydata-sphinx-theme
+sphinx-rtd-theme
 sphinx-prompt
 sphinx-copybutton

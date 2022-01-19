@@ -45,7 +45,9 @@ This section provides a high-level walk through of building a Python packge usin
     conda activate <your-env-name>
     ```
 
-    >If you don't create a `conda` virtual environment, `poetry`'s will create one for you using `venv`. You will have to explicitly tell `poetry` to use this virtual environment when runnings commands by prepending them with `poetry run`. Read more in the `poetry` [documentation](https://python-poetry.org/docs/managing-environments/).
+    ```{note}
+    If you don't create a `conda` virtual environment, `poetry`'s will create one for you using `venv`. You will have to explicitly tell `poetry` to use this virtual environment when runnings commands by prepending them with `poetry run`. Read more in the `poetry` [documentation](https://python-poetry.org/docs/managing-environments/).
+    ```
 
 5. Create a repository on GitHub and put your project under local and remote version control (see [Section 3.3: Put your package under version control](https://py-pkgs.org/03-how-to-package-a-python#put-your-package-under-version-control) of the Python Packages book for help).
 6. Add Python code to module(s) in the `src/` directory. If your project has dependencies, add them using `poetry`:
@@ -73,10 +75,19 @@ This section provides a high-level walk through of building a Python packge usin
     poetry add --dev myst-nb sphinx-autoapi sphinx-rtd-theme
     make html --directory docs/
     ```
-  
-10. Host documentation online with [Read the Docs](https://readthedocs.org/). Read more about testing and code coverage in [Section 3.8.5: Hosting documentation online](https://py-pkgs.org/03-how-to-package-a-python#hosting-documentation-online) of the Python Packages book.
 
-11. Tag a release of your package using Git and GitHub, or equivalent version control tools. Read more about testing and code coverage in [Section 3.8.5: Tagging a package release with version control](https://py-pkgs.org/03-how-to-package-a-python#tagging-a-package-release-with-version-control) of the Python Packages book.
+10. Host documentation online with [Read the Docs](https://readthedocs.org/). Read more about hosting on Read the Docs in [Section 3.8.5: Hosting documentation online](https://py-pkgs.org/03-how-to-package-a-python#hosting-documentation-online) of the Python Packages book. Alternatively, you can host on [GitHub Pages](https://pages.github.com) using the [ghp-import](https://github.com/c-w/ghp-import) package as follows:
+
+    ```{prompt} bash
+    poetry add --dev ghp-import
+    ghp-import -n -p -f docs/_build/html
+    ```
+
+    ```{note}
+    The above command pushes your HTML files to the `gh-pages` branch of your repo. With the rendered site available at e.g., `https://<user-name>.github.io/<repo-name>/`. The `-n` argument includes a *.nojekyll* file in the branch. `-p -f` force pushes to the remote. Read more in the [ghp-import](https://github.com/c-w/ghp-import) documentation.
+    ```
+
+11. Tag a release of your package using Git and GitHub, or equivalent version control tools. Read more about tagging releases in [Section 3.8.5: Tagging a package release with version control](https://py-pkgs.org/03-how-to-package-a-python#tagging-a-package-release-with-version-control) of the Python Packages book.
 
 12. Build sdist and wheel distributions for your package.  Read more in [Section 3.10: Building and distributing your package](https://py-pkgs.org/03-how-to-package-a-python#building-and-distributing-your-package) of the Python Packages book.
 
