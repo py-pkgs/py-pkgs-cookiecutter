@@ -74,3 +74,5 @@ Interested in contributing? Check out the [Contributing Guidelines](https://py-p
 ## Acknowledgements
 
 `py-pkgs-cookiecutter` was originally developed for use in the University of British Columbia's (UBC) `Master of Data Science`_ program (MDS). It was inspired by the pyOpenSci `cookiecutter` [template](https://github.com/pyOpenSci/cookiecutter-pyopensci).
+
+## Test PR
