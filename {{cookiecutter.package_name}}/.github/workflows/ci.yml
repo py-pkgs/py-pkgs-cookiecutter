@@ -10,28 +10,28 @@ on:
 
 jobs:
   ci:
-    # Step 1. Set up operating system
+    # Set up operating system
     runs-on: ubuntu-latest
     steps:
-    # Step 2. Set up Python 3.9
+    # Step 1. Set up Python 3.9
     - uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    # Step 3. Check-out repository so we can access its contents
+    # Step 2. Check-out repository so we can access its contents
     - uses: actions/checkout@v2
-    # Step 4. Install poetry
+    # Step 3. Install poetry
     - uses: snok/install-poetry@v1
-    # Step 5. Install our package
+    # Step 4. Install our package
     - name: Install package
       run: poetry install
-    # Step 6. Run tests for package
+    # Step 5. Run tests for package
     - name: Test with pytest
       run: poetry run pytest tests/ --cov={{ cookiecutter.package_name }} --cov-report=xml
-    # Step 7. Use Codecov to track coverage
+    # Step 6. Use Codecov to track coverage
     - uses: codecov/codecov-action@v2
       with:
         files: ./coverage.xml   # coverage report
         fail_ci_if_error: true  # terminate workflow if there's an error
-    # Step 8. Build documentation
+    # Step 7. Build documentation
     - name: Build documentation
       run: poetry run make html --directory docs/
