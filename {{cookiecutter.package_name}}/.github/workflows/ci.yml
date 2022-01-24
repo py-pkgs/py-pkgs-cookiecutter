@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Check-out repository so we can access its contents
+    - name: Check-out repository
       uses: actions/checkout@v2
 
     - name: Install poetry
@@ -36,7 +36,6 @@ jobs:
     - uses: codecov/codecov-action@v2
       with:
         files: ./coverage.xml   # coverage report
-        fail_ci_if_error: true  # terminate workflow if there's an error
 
     - name: Build documentation
       run: poetry run make html --directory docs/
