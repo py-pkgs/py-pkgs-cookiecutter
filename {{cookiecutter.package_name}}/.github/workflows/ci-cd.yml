@@ -56,12 +56,19 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Install poetry
+      uses: snok/install-poetry@v1
+
+    - name: Install package
+      run: poetry install
+
     - name: Use Python Semantic Release to prepare release
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-          pip install python-semantic-release
           git config user.name github-actions
           git config user.email github-actions@github.com
-          semantic-release publish
+          poetry run semantic-release publish
 
     - name: Publish to TestPyPI
       uses: pypa/gh-action-pypi-publish@release/v1
