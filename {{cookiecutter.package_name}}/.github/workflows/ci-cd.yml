@@ -76,7 +76,6 @@ jobs:
         user: __token__
         password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
         repository_url: https://test.pypi.org/legacy/
-        skip_existing: true
 
     - name: Test install from TestPyPI
       run: |
@@ -90,4 +89,3 @@ jobs:
       with:
         user: __token__
         password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
-        skip_existing: true
