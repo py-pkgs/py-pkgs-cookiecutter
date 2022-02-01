@@ -27,7 +27,7 @@ jobs:
       run: poetry run pytest tests/ --cov={{ cookiecutter.package_name }} --cov-report=xml
 
     - name: Use Codecov to track coverage
-    - uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v2
       with:
         files: ./coverage.xml   # coverage report
 
