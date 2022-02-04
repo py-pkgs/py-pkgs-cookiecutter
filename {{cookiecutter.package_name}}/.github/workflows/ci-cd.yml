@@ -64,6 +64,7 @@ jobs:
 
     - name: Use Python Semantic Release to prepare release
       env:
+        # This token is created automatically by GH Actions
         GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
       run: |
           git config user.name github-actions
