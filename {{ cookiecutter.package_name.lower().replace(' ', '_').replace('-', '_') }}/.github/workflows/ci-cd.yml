@@ -24,7 +24,7 @@ jobs:
       run: poetry install
 
     - name: Test with pytest
-      run: poetry run pytest tests/ --cov={{ cookiecutter.package_name }} --cov-report=xml
+      run: poetry run pytest tests/ --cov={{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }} --cov-report=xml
 
     - name: Use Codecov to track coverage
       uses: codecov/codecov-action@v2
@@ -83,7 +83,7 @@ jobs:
           pip install \
           --index-url https://test.pypi.org/simple/ \
           --extra-index-url https://pypi.org/simple \
-          {{ cookiecutter.package_name }}
+          {{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

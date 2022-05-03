@@ -1,7 +1,6 @@
 {
   "author_name": "Monty Python",
   "package_name": "mypkg",
-  "__package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "package_short_description": "A package for doing great things!",
   "package_version": "0.1.0",
   "python_version": "3.9",
