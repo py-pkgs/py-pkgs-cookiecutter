@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"{{ cookiecutter.package_name }}"
+project = u"{{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}"
 copyright = u"{% now 'local', '%Y' %}, {{ cookiecutter.author_name }}"
 author = u"{{ cookiecutter.author_name }}"
 
