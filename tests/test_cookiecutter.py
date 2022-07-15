@@ -44,9 +44,6 @@ def test_cookiecutter_all_options(
     params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
     path = Path(base_command[1]).joinpath("mypkg")
     result = subprocess.run(base_command[0] + params, shell=True)
-    print(base_command[0] + params)
-    print(params)
-    print(path)
     assert result.returncode == 0
     assert num_items(path, ["tests"]) == 1
     assert num_items(path, ["src/mypkg"]) == 2
