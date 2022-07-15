@@ -1,2 +1,2 @@
-cookiecutter
+cookiecutter >= 2
 pytest
