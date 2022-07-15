@@ -40,10 +40,10 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}` for local development.
+Ready to contribute? Here's how to set up `{{ cookiecutter.__package_slug }}` for local development.
 
-1. Download a copy of `{{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}` locally.
-2. Install `{{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}` using `poetry`:
+1. Download a copy of `{{ cookiecutter.__package_slug }}` locally.
+2. Install `{{ cookiecutter.__package_slug }}` using `poetry`:
 
     ```console
     $ poetry install
@@ -69,5 +69,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `{{ cookiecutter.package_name.lower().replace(' ', '_').replace('-', '_') }}` project is released with a
+Please note that the `{{ cookiecutter.__package_slug }}` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.

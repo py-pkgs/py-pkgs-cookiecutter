@@ -1,8 +1,12 @@
 import json
 import subprocess
-from pathlib import Path
 from itertools import product
-from pytest import fixture, mark
+from pathlib import Path
+
+from pytest import (
+    fixture,
+    mark,
+)
 
 IGNORE = [".DS_Store", "__pycache__"]
 
@@ -14,7 +18,9 @@ def base_command(tmpdir):
 
 def num_items(path, directory=[""]):
     files = [
-        file for file in path.joinpath(*directory).iterdir() if file.name not in IGNORE
+        file
+        for file in path.joinpath(*directory).iterdir()
+        if file.name not in IGNORE
     ]
     return len(files)
 
@@ -35,7 +41,7 @@ combinations = list(
 def test_cookiecutter_all_options(
     base_command, open_source_license, include_github_actions
 ):
-    params = f" open_source_license='{open_source_license}' include_github_actions={include_github_actions}"
+    params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
     path = Path(base_command[1]).joinpath("mypkg")
     result = subprocess.run(base_command[0] + params, shell=True)
     assert result.returncode == 0

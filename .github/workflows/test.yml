@@ -10,7 +10,7 @@ on:
       - main
   schedule:
     # Run cron job every month, https://crontab.guru/every-month
-    - cron: '0 0 1 * *'
+    - cron: "0 0 1 * *"
 
 jobs:
   # This job tests that the CC works
@@ -18,19 +18,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]  # currently not testing on windows or macos
-        python-version: [3.8, 3.9]
+        os: [ubuntu-latest, windows-latest]
+        python-version: [3.9]
     steps:
-    - uses: actions/checkout@v2
-    # Setup
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencie
-      run: |
-        pip install -r requirements.txt
-    # Run tests
-    - name: Pytest tests
-      run: |
-        pytest tests/
+      - uses: actions/checkout@v2
+      # Setup
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencie
+        run: |
+          pip install -r requirements.txt
+      # Run tests
+      - name: Pytest tests
+        run: |
+          pytest tests/
