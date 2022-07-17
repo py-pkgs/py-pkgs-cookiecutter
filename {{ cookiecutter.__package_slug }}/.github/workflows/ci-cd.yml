@@ -9,30 +9,30 @@ jobs:
 
     # Define job steps
     steps:
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "{{ cookiecutter.python_version }}"
 
-    - name: Check-out repository
-      uses: actions/checkout@v2
+      - name: Check-out repository
+        uses: actions/checkout@v2
 
-    - name: Install poetry
-      uses: snok/install-poetry@v1
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
-    - name: Install package
-      run: poetry install
+      - name: Install package
+        run: poetry install
 
-    - name: Test with pytest
-      run: poetry run pytest tests/ --cov={{ cookiecutter.__package_slug }} --cov-report=xml
+      - name: Test with pytest
+        run: poetry run pytest tests/ --cov={{ cookiecutter.__package_slug }} --cov-report=xml
 
-    - name: Use Codecov to track coverage
-      uses: codecov/codecov-action@v2
-      with:
-        files: ./coverage.xml   # coverage report
+      - name: Use Codecov to track coverage
+        uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage.xml   # coverage report
 
-    - name: Build documentation
-      run: poetry run make html --directory docs/
+      - name: Build documentation
+        run: poetry run make html --directory docs/
 
   cd:
     # Only run this job if the "ci" job passes
@@ -46,47 +46,47 @@ jobs:
 
     # Define job steps
     steps:
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "{{ cookiecutter.python_version }}"
 
-    - name: Check-out repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: Check-out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - name: Install poetry
-      uses: snok/install-poetry@v1
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
-    - name: Install package
-      run: poetry install
+      - name: Install package
+        run: poetry install
 
-    - name: Use Python Semantic Release to prepare release
-      env:
-        # This token is created automatically by GH Actions
-        GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-      run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          poetry run semantic-release publish
+      - name: Use Python Semantic Release to prepare release
+        env:
+          # This token is created automatically by GH Actions
+          GH_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+        run: |
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            poetry run semantic-release publish
 
-    - name: Publish to TestPyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
-        repository_url: https://test.pypi.org/legacy/
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
+          repository_url: https://test.pypi.org/legacy/
 
-    - name: Test install from TestPyPI
-      run: |
-          pip install \
-          --index-url https://test.pypi.org/simple/ \
-          --extra-index-url https://pypi.org/simple \
-          {{ cookiecutter.__package_slug }}
+      - name: Test install from TestPyPI
+        run: |
+            pip install \
+            --index-url https://test.pypi.org/simple/ \
+            --extra-index-url https://pypi.org/simple \
+            {{ cookiecutter.__package_slug }}
 
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
