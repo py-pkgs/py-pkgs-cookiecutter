@@ -1,0 +1,24 @@
+name: python-dev
+image: jhginn/workbench-okteto:latest
+namespace: default
+autocreate: true
+workdir: /okteto
+command: ["bash"]
+volumes:
+  - /root/.cache/pypoetry
+  - /root/.vscode-server
+securityContext:
+  capabilities:
+    add:
+    - SYS_PTRACE
+persistentVolume:
+  enabled: true
+  size: 10Gi
+serviceAccount: developer
+nodeSelector:
+  node_pool: highmem-node-pool
+environment:
+  PREFECT_API_URL: http://prefect.orchestration.svc.cluster.local:4200/api
+  RAY_CLUSTER_URL: ray://compute-cluster-ray-head.default.svc.cluster.local:10001
+  MLFLOW_TRACKING_URL: http://mlflow.tracking.svc.cluster.local:5001
+  LAKEFS_ENDPOINT_URL: http://lakefs.datalake.svc.cluster.local:8000
