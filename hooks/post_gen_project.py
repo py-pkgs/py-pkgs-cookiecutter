@@ -5,6 +5,7 @@ import shutil
 # Utilities
 ##############################################################################
 
+
 def remove(filepath):
     if os.path.isfile(filepath):
         os.remove(filepath)

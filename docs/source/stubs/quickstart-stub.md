@@ -32,10 +32,10 @@ pkg
 │   └── usage.ipynb            │
 ├── LICENSE                    │
 ├── README.md                  ┘
-├── pyproject.toml             ┐ 
+├── pyproject.toml             ┐
 ├── src                        │
 │   └── pkg                    │ Package source code, metadata,
-│       ├── __init__.py        │ and build instructions 
+│       ├── __init__.py        │ and build instructions
 │       └── pkg.py             ┘
 └── tests                      ┐
     └── test_pkg.py            ┘ Package tests

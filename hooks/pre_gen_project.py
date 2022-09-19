@@ -1,9 +1,6 @@
 import sys
 
-from pkg_resources import (
-    get_distribution,
-    packaging,
-)
+from pkg_resources import get_distribution, packaging
 
 MIN_CC_VERSION = "2.0.0"
 

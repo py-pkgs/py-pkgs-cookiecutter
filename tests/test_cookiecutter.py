@@ -3,10 +3,7 @@ import subprocess
 from itertools import product
 from pathlib import Path
 
-from pytest import (
-    fixture,
-    mark,
-)
+from pytest import fixture, mark
 
 IGNORE = [".DS_Store", "__pycache__"]
 
@@ -18,9 +15,7 @@ def base_command(tmpdir):
 
 def num_items(path, directory=[""]):
     files = [
-        file
-        for file in path.joinpath(*directory).iterdir()
-        if file.name not in IGNORE
+        file for file in path.joinpath(*directory).iterdir() if file.name not in IGNORE
     ]
     return len(files)
 

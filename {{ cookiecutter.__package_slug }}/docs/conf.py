@@ -6,9 +6,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"{{ cookiecutter.__package_slug }}"
-copyright = u"{% now 'local', '%Y' %}, {{ cookiecutter.author_name }}"
-author = u"{{ cookiecutter.author_name }}"
+project = "{{ cookiecutter.__package_slug }}"
+copyright = "{% now 'local', '%Y' %}, {{ cookiecutter.author_name }}"
+author = "{{ cookiecutter.author_name }}"
 
 # -- General configuration ---------------------------------------------------
 

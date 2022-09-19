@@ -9,7 +9,7 @@ repos:
     - id: check-toml
     - id: debug-statements
     - id: no-commit-to-branch
-      args: ['--branch', 'main2']
+      args: ['--branch', 'main']
   - repo: https://github.com/psf/black
     rev: 22.3.0
     hooks:
