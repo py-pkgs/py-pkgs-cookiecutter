@@ -5,3 +5,5 @@ COPY pyproject.toml /app/pyproject.toml
 COPY README.md /app/README.md
 
 RUN pip install .
+
+ENTRYPOINT [ "python" ]
