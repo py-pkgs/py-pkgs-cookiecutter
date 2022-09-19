@@ -9,6 +9,9 @@ packages = [
     {include = "src"}
 ]
 
+[tool.poetry.scripts]
+greet = "{{ cookiecutter.__package_slug }}.cli:pipeline"
+
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
 
@@ -62,7 +65,6 @@ upload_to_release = true                    # auto-create GitHub release
 upload_to_pypi = false                      # don't auto-upload to PyPI
 remove_dist = false                         # don't remove dists
 patch_without_tag = true                    # patch release by default
-changelog_file = "CHANGELOG.md"
 changelog_sections = "feature, build, refactor, style, test, fix, breaking, documentation, performance"
 commit_message = "{version} [ci skip]"
 {% endif %}
