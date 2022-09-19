@@ -10,7 +10,7 @@ packages = [
 ]
 
 [tool.poetry.scripts]
-greet = "{{ cookiecutter.__package_slug }}.cli:pipeline"
+pipeline = "{{ cookiecutter.__package_slug }}.cli:pipeline"
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
