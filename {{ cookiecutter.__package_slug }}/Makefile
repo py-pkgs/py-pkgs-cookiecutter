@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = {{ cookiecutter.repo_name }}
+PROJECT_NAME = "src/{{ cookiecutter.__package_slug }}""
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -26,7 +26,7 @@ clean:
 
 ## Lint using flake8
 lint:
-	poetry run flake8 {{ cookiecutter.module_name }}
+	poetry run flake8 src
 
 ## Run python tests
 test:
