@@ -14,6 +14,7 @@ greet = "{{ cookiecutter.__package_slug }}.cli:pipeline"
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
+click = "^8.1.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
