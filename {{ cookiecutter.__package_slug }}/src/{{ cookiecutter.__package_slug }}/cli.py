@@ -19,3 +19,4 @@ def pipeline(input_file):
     logger.debug(f"Ingesting file {input_file}")
     result = nchar(input_file)
     logger.debug(f"File path has {result} characters")
+    logger.info("Finished pipeline ...")
