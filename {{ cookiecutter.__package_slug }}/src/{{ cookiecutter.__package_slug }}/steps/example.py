@@ -1,6 +1,9 @@
 """This module contains an example function."""
 
+import logging
 from typing import Union
+
+logger = logging.getLogger("{{ cookiecutter.__package_slug }}.steps.example")
 
 
 def nchar(x: str) -> Union[None, int]:
@@ -12,5 +15,8 @@ def nchar(x: str) -> Union[None, int]:
     """
     y: Union[None, int] = None
     if x != "":
+        logger.debug("Counting characters in input string.")
         y = len(x)
+    else:
+        logger.debug("Input 'x' is empty string.")
     return y
