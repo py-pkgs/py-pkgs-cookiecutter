@@ -5,11 +5,11 @@ import click
 from .steps.example import nchar
 
 logger = logging.getLogger("{{ cookiecutter.__package_slug }}.cli")
-logger.setLevel(logging.DEBUG)
 handler = logging.StreamHandler()
 format = logging.Formatter("%(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(format)
 logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
 
 
 @click.command()
