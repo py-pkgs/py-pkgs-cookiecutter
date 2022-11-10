@@ -7,7 +7,7 @@ license = "{{ cookiecutter.open_source_license }}"
 readme = "README.md"
 
 [tool.poetry.scripts]
-pipeline = "{{ cookiecutter.__package_slug }}.cli:pipeline"
+pipeline = "{{ cookiecutter.__package_slug }}.cli:entrypoint"
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
@@ -27,7 +27,6 @@ sphinx-autoapi = "^1.8.4"
 sphinx-rtd-theme = "^1.0.0"
 ipykernel = "^6.15.1"
 python-semantic-release = "^7.32.1"
-ipykernel = "^6.15.1"
 pytest-helpers-namespace = "^2021.12.29"
 
 [tool.black]

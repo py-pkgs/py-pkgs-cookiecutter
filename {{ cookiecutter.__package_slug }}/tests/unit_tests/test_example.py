@@ -1,4 +1,3 @@
-import pytest
 from {{cookiecutter.__package_slug}}.steps.example import nchar
 
 

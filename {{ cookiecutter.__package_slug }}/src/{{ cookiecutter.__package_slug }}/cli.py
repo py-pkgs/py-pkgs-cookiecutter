@@ -36,9 +36,10 @@ def version():
 
 
 @app.command(
+    name="{{ cookiecutter.__package_slug" }},
     short_help="Prints the number of characters in the input string"
 )
-def pipeline_entrypoint(input_file: str):
+def pipeline(input_file: str = typer.Argument(help="Path to input file", default=None)):
     logger.info("Starting pipeline ...")
     logger.debug(f"Ingesting file {input_file}")
     result = nchar(input_file)
