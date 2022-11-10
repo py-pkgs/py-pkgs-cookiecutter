@@ -6,7 +6,7 @@ import pytest
 import yaml  # type: ignore
 from typer.testing import CliRunner
 
-from flow_utils.commands import config
+from {{ cookiecutter.__package_slug }}.commands import config
 
 runner = CliRunner()
 
