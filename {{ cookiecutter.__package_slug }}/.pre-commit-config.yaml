@@ -1,3 +1,4 @@
+exclude: (^docs/_build/)|(^notebooks/)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
@@ -11,20 +12,19 @@ repos:
     - id: no-commit-to-branch
       args: ['--branch', 'main']
   - repo: https://github.com/psf/black
-    rev: 22.3.0
+    rev: 22.10.0
     hooks:
     - id: black
   - repo: https://github.com/pycqa/flake8
-    rev: 3.9.1
+    rev: 5.0.4
     hooks:
     - id: flake8
-      exclude: ^notebooks/
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.812
+    rev: v0.990
     hooks:
     - id: mypy
-    files: ^notebooks/
+      args: [--ignore-missing-imports]
   - repo: https://github.com/pycqa/isort
-    rev: 5.9.2
+    rev: 5.10.1
     hooks:
     - id: isort

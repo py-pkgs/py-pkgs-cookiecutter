@@ -7,21 +7,45 @@ jobs:
     # Set up operating system
     runs-on: ubuntu-latest
 
+    #if: ${{ !endsWith(github.ref, '/main') || !endsWith(github.ref, '/staging') }}
+    if: ${{ github.event_name == 'pull_request' || endsWith(github.ref, '/main') || endsWith(github.ref, '/staging') }}
+
     # Define job steps
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "{{ cookiecutter.python_version }}"
-
       - name: Check-out repository
         uses: actions/checkout@v2
 
       - name: Install poetry
         uses: snok/install-poetry@v1
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8.13"
+          cache: 'poetry'
+
+      - name: Set up authentication with private pypi
+        env:
+          GCPYPI_TOKEN: ${{ secrets.GCPYPI_TOKEN }}
+          GCPYPI_REPO: ${{ secrets.GCPYPI_REPO }}
+        run: |
+            poetry config repositories.gcpypi $GCPYPI_REPO
+            poetry config http-basic.gcpypi _json_key_base64 $GCPYPI_TOKEN
+
       - name: Install package
         run: poetry install
+
+      - name: Formatting - black
+        run: poetry run black .
+
+      - name: Linting - flake8
+        run: poetry run flake8 . --extend-exclude notebooks
+
+      - name: Type hints - mypy
+        run: poetry run mypy . --exclude notebooks --ignore-missing-imports
+
+      - name: Imports - isort
+        run: poetry run isort . --skip notebooks
 
       - name: Test with pytest
         run: poetry run pytest tests/ --cov={{ cookiecutter.__package_slug }} --cov-report=xml
@@ -33,7 +57,6 @@ jobs:
 
       - name: Build documentation
         run: poetry run make html --directory docs/
-
   cd:
     # Only run this job if the "ci" job passes
     needs: ci
