@@ -18,5 +18,8 @@
     "no",
     "ci",
     "ci+cd"
+  ],
+  "_copy_without_render": [
+    ".github/*.yml"
   ]
 }
