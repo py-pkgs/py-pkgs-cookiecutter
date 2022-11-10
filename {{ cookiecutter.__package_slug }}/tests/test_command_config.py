@@ -16,19 +16,14 @@ class TestCheckConfigArg:
         value = config._check_config_arg("env", "dev")
         assert value == "dev"
 
-    def test_check_config_arg_environment_variable_with_bool_conversion(self):
-        os.environ["FUNDA_ETL_EXTRACT_CACHE_USE_CACHE"] = "false"
-        value = config._check_config_arg("extract_cache_use_cache", True)
-        assert not value
-
     def test_check_config_arg_raises(self):
         with pytest.raises(
             ValueError,
-            match="Input argument 'extract_cache_use_cache' must either be passed",
+            match="Input argument 'pipeline_setting' must either be passed",
         ):
-            if os.getenv("FUNDA_ETL_EXTRACT_CACHE_USE_CACHE") is not None:
-                del os.environ["FUNDA_ETL_EXTRACT_CACHE_USE_CACHE"]
-            _ = config._check_config_arg("extract_cache_use_cache", None)
+            if os.getenv("{{ cookiecutter.__package_slug }}_PIPELINE_SETTING") is not None:
+                del os.environ["{{ cookiecutter.__package_slug }}_PIPELINE_SETTING"]
+            _ = config._check_config_arg("pipeline_setting", None)
 
 
 def test_create_config():
@@ -40,27 +35,8 @@ def test_create_config():
                 f"{tmpdir}/config.yaml",
                 "--env",
                 "dev",
-                "--credentials-block",
-                "my-credentials",
-                "--extract-output-bucket",
-                "this-bucket",
-                "--extract-output-blob",
-                "this-blob",
-                "--extract-cache-use-cache",
-                "--extract-cache-expiration-in-days",
-                "4",
-                "--extract-cache-storage-bucket",
-                "this-bucket",
-                "--extract-cache-storage-blob",
-                "this-blob",
-                "--transform-output-bucket",
-                "this-bucket",
-                "--transform-output-blob",
-                "this-blob",
-                "--load-output-dataset",
-                "this-dataset",
-                "--load-output-table",
-                "this-table",
+                "--pipeline-setting",
+                "this",
             ],
         )
     assert result.exit_code == 0
