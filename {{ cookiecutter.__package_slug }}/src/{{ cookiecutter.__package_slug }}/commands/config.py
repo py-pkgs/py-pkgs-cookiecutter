@@ -62,7 +62,7 @@ def create_config(
         )
     config_out = pipeline_config.GlobalConfig(
         env=_check_config_arg("env", env),
-        pipeline_setting=_check_config_arg("pipeline_setting", pipeline_setting),
+        pipeline=pipeline_config.PipelineSettings(setting = _check_config_arg("pipeline_setting", pipeline_setting)),
     )
     with _output_path.open("w") as outFile:
         for line in config_out.yaml():

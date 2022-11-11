@@ -1,4 +1,4 @@
-FROM python:3.8.13-slim-buster
+FROM python:{{ cookiecutter.python_version }}-slim-buster
 WORKDIR /app
 COPY src /app/src
 COPY pyproject.toml /app/pyproject.toml
