@@ -36,7 +36,7 @@ def version():
 
 
 @app.command(
-    name="{{ cookiecutter.__package_slug" }},
+    name="{{ cookiecutter.__package_slug }}",
     short_help="Prints the number of characters in the input string"
 )
 def pipeline(input_file: str = typer.Argument(help="Path to input file", default=None)):
