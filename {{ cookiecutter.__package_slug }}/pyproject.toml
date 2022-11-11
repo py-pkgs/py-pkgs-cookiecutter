@@ -12,7 +12,7 @@ pipeline = "{{ cookiecutter.__package_slug }}.cli:entrypoint"
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
 typer = "^0.6.1"
-pydantic-yaml = "^0.8.1"
+pydantic-yaml = {extras = ["pyyaml", "ruamel"], version = "^0.8.1"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"
