@@ -1,4 +1,0 @@
-myst-parser
-sphinx-rtd-theme
-sphinx-prompt
-sphinx-copybutton
