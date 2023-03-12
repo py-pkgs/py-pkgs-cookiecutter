@@ -1,0 +1,18 @@
+site_name: '{{cookiecutter.package_name}}'
+repo_url: {{cookiecutter.repository}}
+
+nav:
+  - Home: index.md
+  - Usage: usage.ipynb
+  - Changelog: changelog.md
+  - Contributing: contributing.md
+  - Conduct: conduct.md
+
+theme:
+  name: "material"
+
+plugins:
+- search
+- mkdocstrings
+- include-markdown
+- mkdocs-jupyter

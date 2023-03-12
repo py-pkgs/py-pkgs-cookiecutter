@@ -1,2 +1,1 @@
-```{include} ../CONDUCT.md
-```
+{% include "../CONDUCT.md" %}

@@ -1,2 +1,1 @@
-```{include} ../CHANGELOG.md
-```
+{% include "../CHANGELOG.md" %}
