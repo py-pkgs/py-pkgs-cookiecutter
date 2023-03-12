@@ -3,6 +3,7 @@
   "package_name": "mypkg",
   "repository": "https://github.com/placeholder",
   "__package_slug": "{{ cookiecutter.package_name|lower|replace(' ', '_')|replace('-', '_') }}",
+  "__package_env_slug": "{{ cookiecutter.__package_slug|upper }}",
   "package_short_description": "A package for doing great things!",
   "package_version": "0.1.0",
   "python_version": "3.9",
