@@ -14,7 +14,7 @@ python = "^{{ cookiecutter.python_version }}"
 typer = "^0.6.1"
 pydantic-yaml = {extras = ["pyyaml", "ruamel"], version = "^0.8.1"}
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 flake8 = "^5.0.4"
 mypy = "^0.990"
 pre-commit = "^2.12.1"
@@ -28,6 +28,9 @@ sphinx-rtd-theme = "^1.0.0"
 ipykernel = "^6.15.1"
 python-semantic-release = "^7.32.1"
 pytest-helpers-namespace = "^2021.12.29"
+interrogate = "^1.5.0"
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.20.0"}
 
 [tool.black]
 line-length = 88
@@ -71,6 +74,32 @@ patch_without_tag = true                    # patch release by default
 changelog_sections = "feature, build, refactor, style, test, fix, breaking, documentation, performance"
 commit_message = "{version} [ci skip]"
 {% endif %}
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = true
+ignore-semiprivate = true
+ignore-private = true
+ignore-property-decorators = true
+ignore-module = true
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = true
+fail-under = 10
+exclude = [
+  "setup.py", "docs", "build", "src/funda_extract/cli.py"
+]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+# possible values: 0 (minimal output), 1 (-v), 2 (-vv)
+verbose = 0
+quiet = false
+whitelist-regex = []
+color = true
+omit-covered-files = false
+#generate-badge = "."
+#badge-format = "svg"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
