@@ -140,3 +140,10 @@ dmypy.json
 
 # MacOS
 .DS_Store
+
+# VsCode
+.vscode
+
+# Artifacts
+.secrets
+.notebooks
