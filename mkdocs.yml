@@ -1,0 +1,16 @@
+site_name: 'Workbench template'
+repo_url: https://github.com/JasperHG90/workbench-package-template
+
+nav:
+  - Home: index.md
+  - Changelog: changelog.md
+  - Contributing: contributing.md
+  - Conduct: conduct.md
+
+theme:
+  name: "material"
+
+plugins:
+- search
+- mkdocstrings
+- include-markdown

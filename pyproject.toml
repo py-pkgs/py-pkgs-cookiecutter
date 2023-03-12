@@ -7,9 +7,9 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8.13"
+python = "^3.8.13,<3.10"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 flake8 = "^3.9.2"
 mypy = "^0.812"
 pre-commit = "^2.12.1"
@@ -19,10 +19,13 @@ pytest-dotenv = "^0.5.2"
 isort = "^5.9.2"
 python-semantic-release = "7.28.1"
 black = "^22.3.0"
-myst-nb = "^0.15.0"
-sphinx-autoapi = "^1.8.4"
-sphinx-rtd-theme = "^1.0.0"
 ipykernel = "^6.15.1"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.20.0"}
+mkdocs-include-markdown-plugin = "^4.0.4"
+mkdocs-material = "^9.1.2"
 
 [tool.black]
 line-length = 88
