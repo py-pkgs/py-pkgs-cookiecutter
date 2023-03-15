@@ -27,7 +27,7 @@ logger.setLevel(logging.DEBUG)
 
 load_dotenv()
 
-ENV_PREFIX = "{{cookiecutter.__package_env_slug}}"  # Environment variable prefix
+ENV_PREFIX = "MYPKG"  # Environment variable prefix
 current_dir = plb.Path(__file__).absolute().parent
 
 if os.getenv(f"{ENV_PREFIX}_ENV") == "prod" and os.getenv("RUNNER_OS") is None:
@@ -124,7 +124,7 @@ def lint(c):
 def type_check(c):
     """Check type hinting using mypy"""
     c.run("poetry run mypy . --exclude .notebooks --ignore-missing-imports")
-    
+
 
 @task
 def sort_imports(c):
@@ -136,7 +136,7 @@ def sort_imports(c):
 def docstring_coverage(c):
     """Check docstring coverage using interrogate"""
     c.run("poetry run interrogate -vv src")
-    
+
 
 @task
 def test(c):
@@ -166,7 +166,9 @@ def push_image(c):
     env = os.environ[f"{ENV_PREFIX}_ENV"]
     registry_url = os.environ[f"{ENV_PREFIX}_DOCKER_REGISTRY_URL"]
     docker_image_name = os.environ[f"{ENV_PREFIX}_DOCKER_IMAGE_NAME"]
-    tag_latest, tag_sha, tag_version = _create_docker_tags(registry_url, docker_image_name, env)
+    tag_latest, tag_sha, tag_version = _create_docker_tags(
+        registry_url, docker_image_name, env
+    )
     c.run(f"docker push {tag_latest}")
     if env in ["stg", "prod"]:
         c.run(f"docker push {tag_sha}")
