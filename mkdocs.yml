@@ -4,6 +4,10 @@ repo_url: https://github.com/JasperHG90/workbench-package-template
 nav:
   - Home: index.md
   - Changelog: changelog.md
+  - Recipes:
+    - 'Authenticating with private pypi repositories': recipes/authenticating-with-private-pypi.md
+    - 'Building and pushing docker images to a private artifact store': recipes/building-and-pushing-docker-containers.md
+    - 'Orchestrating flows with Prefect 2': recipes/orchestrating-flows-with-prefect2.md
   - Contributing: contributing.md
   - Conduct: conduct.md
 
