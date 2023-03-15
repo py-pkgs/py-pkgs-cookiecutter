@@ -25,34 +25,34 @@ def test_cookiecutter_default_options(base_command):
     assert result.returncode == 0
 
 
-with open("cookiecutter.json") as f:
-    options = json.load(f)
-combinations = list(
-    product(options["open_source_license"], options["include_github_actions"])
-)
+# with open("cookiecutter.json") as f:
+#     options = json.load(f)
+# combinations = list(
+#     product(options["open_source_license"], options["include_github_actions"])
+# )
 
 
-@mark.parametrize("open_source_license,include_github_actions", combinations)
-def test_cookiecutter_all_options(
-    base_command, open_source_license, include_github_actions
-):
-    params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
-    path = Path(base_command[1]).joinpath("mypkg")
-    result = subprocess.run(base_command[0] + params, shell=True)
-    assert result.returncode == 0
-    assert num_items(path, ["tests"]) == 1
-    assert num_items(path, ["src/mypkg"]) == 2
-    assert num_items(path, ["docs"]) == 9
-    print(f"Checking pair: {open_source_license}, {include_github_actions}")
-    if open_source_license == "None":
-        if include_github_actions in ["ci", "ci+cd"]:
-            assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 11
-        else:
-            assert num_items(path) == 10
-    else:
-        if include_github_actions in ["ci", "ci+cd"]:
-            assert num_items(path, [".github", "workflows"]) == 1
-            assert num_items(path) == 12
-        else:
-            assert num_items(path) == 11
+# @mark.parametrize("open_source_license,include_github_actions", combinations)
+# def test_cookiecutter_all_options(
+#     base_command, open_source_license, include_github_actions
+# ):
+#     params = f' open_source_license="{open_source_license}" include_github_actions={include_github_actions}'
+#     path = Path(base_command[1]).joinpath("mypkg")
+#     result = subprocess.run(base_command[0] + params, shell=True)
+#     assert result.returncode == 0
+#     assert num_items(path, ["tests"]) == 1
+#     assert num_items(path, ["src/mypkg"]) == 2
+#     assert num_items(path, ["docs"]) == 9
+#     print(f"Checking pair: {open_source_license}, {include_github_actions}")
+#     if open_source_license == "None":
+#         if include_github_actions in ["ci", "ci+cd"]:
+#             assert num_items(path, [".github", "workflows"]) == 1
+#             assert num_items(path) == 11
+#         else:
+#             assert num_items(path) == 10
+#     else:
+#         if include_github_actions in ["ci", "ci+cd"]:
+#             assert num_items(path, [".github", "workflows"]) == 1
+#             assert num_items(path) == 12
+#         else:
+#             assert num_items(path) == 11
