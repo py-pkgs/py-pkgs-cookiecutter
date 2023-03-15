@@ -1,3 +1,6 @@
 docs/_build
 scratch
 .venv
+.vscode
+.pytest_cache
+__pycache__
