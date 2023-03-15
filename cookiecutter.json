@@ -22,6 +22,7 @@
     "ci+cd"
   ],
   "_copy_without_render": [
-    ".github/*.yml"
+    ".github/*.yml",
+    "docs/*.md"
   ]
 }
