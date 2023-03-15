@@ -13,8 +13,9 @@ packages = [
 pipeline = "{{ cookiecutter.__package_slug }}.cli:entrypoint"
 
 [tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
+python = "^{{ cookiecutter.python_version }},<3.11"
 typer = "^0.6.1"
+pydantic = "^1.10.6"
 pydantic-yaml = {extras = ["pyyaml", "ruamel"], version = "^0.8.1"}
 
 [tool.poetry.group.dev.dependencies]
@@ -96,7 +97,7 @@ ignore-nested-classes = true
 ignore-setters = true
 fail-under = 10
 exclude = [
-  "setup.py", "docs", "build", "src/funda_extract/cli.py"
+  "setup.py", "docs", "build", "src/{{cookiecutter.__package_slug}}/cli.py", "src/{{cookiecutter.__package_slug}}/commands"
 ]
 ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
 # possible values: 0 (minimal output), 1 (-v), 2 (-vv)
@@ -108,7 +109,8 @@ omit-covered-files = false
 #generate-badge = "."
 #badge-format = "svg"
 
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+requires = [
+  "poetry-core>=1",
+]
