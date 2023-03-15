@@ -8,6 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8.13,<3.10"
+pydantic = "^1.10.6"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^3.9.2"
@@ -23,6 +24,16 @@ ipykernel = "^6.15.1"
 invoke = "<2.0.0"
 gitpython = "^3.1.31"
 python-dotenv = "^1.0.0"
+nox = "^2022.11.21"
+nox-poetry = "^1.0.2"
+interrogate = "^1.5.0"
+coverage = "^7.2.1"
+codespell = "^2.2.4"
+pyproject-fmt = "<0.9"
+deptry = "^0.8.0"
+pyupgrade = "^3.3.1"
+bandit = "^1.7.5"
+typeguard = "^3.0.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
