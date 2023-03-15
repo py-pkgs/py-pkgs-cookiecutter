@@ -12,9 +12,4 @@ def test_dir():
 
 @pytest.fixture
 def config_dict():
-    return {
-        "env": "dev",
-        "pipeline": {
-            "setting": "this"
-        }
-    }
+    return {"env": "dev", "pipeline": {"setting": "this"}}
