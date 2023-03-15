@@ -5,6 +5,9 @@ description = "{{ cookiecutter.package_short_description }}"
 authors = ["{{ cookiecutter.author_name }}"]
 license = "{{ cookiecutter.open_source_license }}"
 readme = "README.md"
+packages = [
+  { include = "{{ cookiecutter.__package_slug }}", from = "src" }
+]
 
 [tool.poetry.scripts]
 pipeline = "{{ cookiecutter.__package_slug }}.cli:entrypoint"
@@ -27,6 +30,8 @@ python-semantic-release = "^7.32.1"
 pytest-helpers-namespace = "^2021.12.29"
 interrogate = "^1.5.0"
 invoke = "<2.0.0"
+gitpython = "^3.1.31"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
