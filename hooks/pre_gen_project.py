@@ -9,7 +9,7 @@ def custom_warning():
     print(
         """
 ===================================================================
-Don't forget to update the environment variables in the .env file. 
+Don't forget to update the environment variables in the .env file.
 For examples on how to use the template, see <URL>
 ===================================================================
     """
