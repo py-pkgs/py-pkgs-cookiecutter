@@ -26,18 +26,15 @@ app.add_typer(config.config, name="config")
 def main(trace: bool = False):
     if trace:
         logger.setLevel(logging.DEBUG)
-        
 
-@app.command(
-    short_help="📌 Displays the current version number of the {{ cookiecutter.__package_slug }} library"
-)
+
+@app.command(short_help="📌 Displays the current version number of the {{ cookiecutter.__package_slug }} library")
 def version():
     print(__version__)
 
 
 @app.command(
-    name="{{ cookiecutter.__package_slug }}",
-    short_help="Prints the number of characters in the input string"
+    name="{{ cookiecutter.__package_slug }}", short_help="Prints the number of characters in the input string"
 )
 def pipeline(input_file: str = typer.Argument(help="Path to input file", default=None)):
     logger.info("Starting pipeline ...")
