@@ -13,6 +13,8 @@
 - Check pyproject settings for all tools
 - Check all mkdocs extensions installed
 - Pyproject config
+- Add mkdocstrings https://mkdocstrings.github.io/usage/
+- In noxfile pytest: find way to only install main dependencies
 
 Possibly:
 
