@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "workbench_cookiecutter"
-version = "0.1.0"
+version = "0.2.0"
 description = "Cookiecutter for workbench projects"
 authors = ["Jasper Ginn <jasperginn@gmail.com>"]
 license = "MIT"
