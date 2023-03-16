@@ -1,18 +1,15 @@
-# Py-Pkgs-Cookiecutter: A cookiecutter template for Python packages
+# Workbench python template: a tagline that sounds hip and cool and convinces you
 
+<!--
 [![Documentation Status](https://readthedocs.org/projects/py-pkgs-cookiecutter/badge/?version=latest)](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/)
 ![tests](https://github.com/py-pkgs/py-pkgs-cookiecutter/workflows/test/badge.svg)
 [![release](https://img.shields.io/github/release/py-pkgs/py-pkgs-cookiecutter.svg)](https://github.com/py-pkgs/py-pkgs-cookiecutter/releases)
 [![python](https://img.shields.io/badge/python-%5E3.8-blue)]()
 [![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-purple)]()
+-->
 
-<p align="center">
-  <img src="docs/source/_static/hex.png" width="220" alt="The Py-Pkgs-Cookiecutter logo.">
-</p>
+Placeholder
 
-<br>
-
-`py-pkgs-cookiecutter` is a [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) template for creating a fully-featured Python package using [`poetry`](https://python-poetry.org). It supplements the [Python Packages book](https://py-pkgs.org) by Tomas Beuzen and Tiffany Timbers but can be used independently.
 
 ## Usage
 
