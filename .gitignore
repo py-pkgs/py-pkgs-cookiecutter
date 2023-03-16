@@ -8,3 +8,6 @@ __pycache__
 .mypy_cache
 .coverage
 htmlcov
+# Ruff
+.ruff_cache
+.DS_Store
