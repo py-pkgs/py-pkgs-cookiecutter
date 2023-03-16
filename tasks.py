@@ -52,7 +52,7 @@ def fmt(c, regen_template=True):
     if regen_template:
         instantiate_template(c)
     print('--- FORMATTING CODE (black)')
-    c.run("poetry run black -vv .template/mypkg")
+    c.run("poetry run black -v --diff .template/mypkg")
     print('--- END CODE FORMATTING\n')
 
 
@@ -137,10 +137,21 @@ def build_docs(c, regen_template=True):
 
 
 @task
+def lock_dependencies(c, regen_template=True):
+    """Check if project dependencies are compatible"""
+    if regen_template:
+        instantiate_template(c)
+    print('--- LOCKING DEPENDENCIES')
+    c.run("cd .template/mypkg && poetry lock -v")
+    print('--- END LOCKING DEPENDENCIES')
+
+
+@task
 def checklist(c):
     """Instantiate the cookiecutter project and run checks"""
     instantiate_template(c)
     pyproject_fmt(c, regen_template=False)
+    lock_dependencies(c, regen_template=False)
     check_dependencies(c, regen_template=False)
     security_lint(c, regen_template=False)
     docstring_coverage(c, regen_template=False)
@@ -149,14 +160,7 @@ def checklist(c):
     sort_imports(c, regen_template=False)
     type_hints(c, regen_template=False)
     build_docs(c, regen_template=False)
-
-
-@task
-def dependency_compatibility(c):
-    """Check if project dependencies are compatible"""
-    instantiate_template(c)
-    c.run("cd .template/mypkg && poetry lock -v")
-
+    
 
 @task
 def test(c):
