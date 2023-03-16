@@ -10,6 +10,7 @@ nav:
     - 'Orchestrating flows with Prefect 2': recipes/orchestrating-flows-with-prefect2.md
   - Contributing: contributing.md
   - Conduct: conduct.md
+  - Todo: todo.md
 
 theme:
   name: "material"
