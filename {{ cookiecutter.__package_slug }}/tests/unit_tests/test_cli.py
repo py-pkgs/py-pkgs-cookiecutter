@@ -1,6 +1,5 @@
 from typer.testing import CliRunner
-
-from {{ cookiecutter.__package_slug }}.cli import app
+from {{cookiecutter.__package_slug}}.cli import app
 
 
 def test_listings_cli():

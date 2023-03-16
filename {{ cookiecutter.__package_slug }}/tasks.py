@@ -6,7 +6,6 @@ View all tasks by executing `poetry run invoke --list`
 Run a task by executing 'poetry run invoke <task>' on the command line.
 """
 
-import datetime as dt
 import logging
 import os
 import pathlib as plb
@@ -15,8 +14,7 @@ import typing
 import git
 from dotenv import load_dotenv
 from invoke import task
-
-from {{ cookiecutter.__package_slug }} import __version__
+from {{cookiecutter.__package_slug}} import __version__
 
 logger = logging.getLogger("tasks")
 handler = logging.StreamHandler()
@@ -109,40 +107,12 @@ def set_up_pre_commit(c):
 
 
 @task
-def fmt(c):
-    """Format python code using black"""
-    c.run("poetry run black .")
-
-
-@task
-def lint(c):
-    """Lint using flake8"""
-    c.run("poetry run flake8 . --extend-exclude .notebooks")
-
-
-@task
-def type_check(c):
-    """Check type hinting using mypy"""
-    c.run("poetry run mypy . --exclude .notebooks --ignore-missing-imports")
-
-
-@task
-def sort_imports(c):
-    """Sort python imports with isort"""
-    c.run("poetry run isort . --skip .notebooks")
-
-
-@task
-def docstring_coverage(c):
-    """Check docstring coverage using interrogate"""
-    c.run("poetry run interrogate -vv src")
-
-
-@task
-def test(c):
-    """Run pytest on the 'tests' directory"""
-    print("Running tests ...")
-    c.run(f'poetry run pytest {str(current_dir / "tests")}')
+def nox(c, session = "all"):
+    """Run all sessions defined in noxfile"""
+    cmd = "nox"
+    if session != "all":
+        cmd += f" -s {session}"
+    c.run(cmd)
 
 
 @task

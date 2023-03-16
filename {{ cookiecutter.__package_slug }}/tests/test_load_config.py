@@ -3,8 +3,7 @@ import tempfile
 import typing
 
 import yaml  # type: ignore
-
-from {{ cookiecutter.__package_slug }}.config import load_config
+from {{cookiecutter.__package_slug}}.config import load_config
 
 
 def test_load_config(config_dict: typing.Dict[str, typing.Union[str, typing.Dict]]):

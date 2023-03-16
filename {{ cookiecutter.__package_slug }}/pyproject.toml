@@ -1,3 +1,30 @@
+[tool.black]
+line-length = 88
+exclude = '''
+^/(
+  (
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.venv
+    | _build
+    | build
+    | dist
+    | .notebooks
+    | .nox
+  )
+)
+'''
+
+[tool.isort]
+profile = "black"
+extend_skip = [".notebooks", ".nox", ".venv"]
+
+[tool.mypy]
+exclude = "^.notebooks/"
+ignore_missing_imports = true
+
 [tool.poetry]
 name = "{{ cookiecutter.__package_slug }}"
 version = "{{ cookiecutter.package_version }}"
@@ -19,7 +46,6 @@ pydantic = "^1.10.6"
 pydantic-yaml = {extras = ["pyyaml", "ruamel"], version = "^0.8.1"}
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^5.0.4"
 mypy = "^0.990"
 pre-commit = "^2.12.1"
 pytest = "^7.0"
@@ -32,7 +58,15 @@ pytest-helpers-namespace = "^2021.12.29"
 interrogate = "^1.5.0"
 invoke = "<2.0.0"
 gitpython = "^3.1.31"
+coverage = "^7.2.1"
 python-dotenv = "^1.0.0"
+pyproject-fmt = "<0.9"
+deptry = "^0.8.0"
+bandit = "^1.7.5"
+ruff = "^0.0.256"
+tomli = "^2.0.1"
+nox = "^2022.11.21"
+nox-poetry = "^1.0.2"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
@@ -41,33 +75,21 @@ mkdocs-include-markdown-plugin = "^4.0.4"
 mkdocs-jupyter = "^0.22.0"
 mkdocs-material = "<9.0.0"
 
-[tool.black]
-line-length = 88
-exclude = '''
-^/(
-  (
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.venv
-    | _build
-    | build
-    | dist
-    | notebooks
-  )
-)
-'''
+[tool.codespell]
+skip = ".nox,.venv,.notebooks,docs,site,poetry.lock"
+count = ''
+quiet-level = 3
 
-[tool.isort]
-profile = "black"
-extend_skip = ["notebooks"]
+[tool.ruff]
+ignore = ["E501"]
+extend-exclude = [
+  "__pycache__",
+  "docs",
+  "site",
+  ".nox",
+  ".notebooks"
+]
 
-[tool.mypy]
-exclude = "^notebooks/"
-ignore_missing_imports = true
-
-{% if cookiecutter.include_github_actions == 'ci+cd' -%}
 [tool.semantic_release]
 version_variable = [
   "pyproject.toml:version"
@@ -82,7 +104,6 @@ remove_dist = false                         # don't remove dists
 patch_without_tag = true                    # patch release by default
 changelog_sections = "feature, build, refactor, style, test, fix, breaking, documentation, performance"
 commit_message = "{version} [ci skip]"
-{% endif %}
 
 [tool.interrogate]
 ignore-init-method = true

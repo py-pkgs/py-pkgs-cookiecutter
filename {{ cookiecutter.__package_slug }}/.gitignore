@@ -150,3 +150,6 @@ dmypy.json
 
 # Nox
 .nox
+
+# Ruff
+.ruff_cache
