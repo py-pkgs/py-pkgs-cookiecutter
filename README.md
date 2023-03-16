@@ -10,7 +10,6 @@
 
 This poetry template is primarily intended to be used with data/ml pipelines.
 
-
 ## Usage
 
 Please see the [documentation](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/) for more detail on using `py-pkgs-cookiecutter`. We provide the fundamental steps below:
