@@ -8,7 +8,7 @@
 [![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-purple)]()
 -->
 
-Placeholder
+This poetry template is primarily intended to be used with data/ml pipelines.
 
 
 ## Usage
