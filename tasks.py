@@ -83,12 +83,12 @@ def fmt_pyproject(c, regen_template=True):
 
 @task
 def lint(c, regen_template=True):
-    """Lint using flake8"""
+    """Lint using ruff"""
     if regen_template:
         instantiate_template(c)
-    print("--- LINTING CODE (flake8)")
+    print("--- LINTING CODE (ruff)")
     c.run(
-        "poetry run flake8 .template/mypkg -v --extend-exclude .template/mypkg/.notebooks"
+        "cd .template/mypkg && poetry run ruff check ."
     )
     print("--- END LINTING\n")
 
