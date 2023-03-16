@@ -3,6 +3,7 @@ import tempfile
 import typing
 
 import yaml  # type: ignore
+
 from {{cookiecutter.__package_slug}}.config import load_config
 
 

@@ -14,6 +14,7 @@ import typing
 import git
 from dotenv import load_dotenv
 from invoke import task
+
 from {{cookiecutter.__package_slug}} import __version__
 
 logger = logging.getLogger("tasks")
@@ -107,7 +108,7 @@ def set_up_pre_commit(c):
 
 
 @task
-def nox(c, session = "all"):
+def nox(c, session="all"):
     """Run all sessions defined in noxfile"""
     cmd = "nox"
     if session != "all":

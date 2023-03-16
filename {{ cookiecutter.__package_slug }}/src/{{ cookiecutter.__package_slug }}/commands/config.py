@@ -4,6 +4,7 @@ import pathlib as plb
 import typing
 
 import typer
+
 from {{cookiecutter.__package_slug}} import config as pipeline_config
 from {{cookiecutter.__package_slug}}.config import load_config
 from {{cookiecutter.__package_slug}}.const import _ENV_VAR_MAPPING

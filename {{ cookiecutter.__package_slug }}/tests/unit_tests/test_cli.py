@@ -1,4 +1,5 @@
 from typer.testing import CliRunner
+
 from {{cookiecutter.__package_slug}}.cli import app
 
 
