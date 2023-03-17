@@ -11,3 +11,4 @@ htmlcov
 # Ruff
 .ruff_cache
 .DS_Store
+.notebooks
