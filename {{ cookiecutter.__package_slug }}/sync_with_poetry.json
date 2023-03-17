@@ -1,0 +1,34 @@
+{
+    "bandit": {
+        "repo": "https://github.com/PyCQA/bandit",
+        "rev": "${rev}"
+    },
+    "black": {
+        "repo": "https://github.com/psf/black",
+        "rev": "${rev}"
+    },
+    "isort": {
+        "repo": "https://github.com/pycqa/isort",
+        "rev": "${rev}"
+    },
+    "mypy": {
+        "repo": "https://github.com/pre-commit/mirrors-mypy",
+        "rev": "v${rev}"
+    },
+    "pyproject-fmt": {
+        "repo": "https://github.com/tox-dev/pyproject-fmt",
+        "rev": "${rev}"
+    },
+    "interrogate": {
+        "repo": "https://github.com/econchick/interrogate",
+        "rev": "${rev}"
+    },
+    "ruff": {
+        "repo": "https://github.com/charliermarsh/ruff-pre-commit",
+        "rev": "v${rev}"
+    },
+    "deptry": {
+        "repo": "https://github.com/fpgmaas/deptry.git",
+        "rev": "${rev}"
+    }
+}

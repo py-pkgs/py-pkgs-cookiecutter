@@ -13,6 +13,13 @@ theme:
 
 plugins:
 - search
-- mkdocstrings
+- mkdocstrings:
+    enabled: true
+    custom_templates: templates
+    default_handler: python
+    handlers:
+      python:
+        options:
+          show_source: false
 - include-markdown
 - mkdocs-jupyter
