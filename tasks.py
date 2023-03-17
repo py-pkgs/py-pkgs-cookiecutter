@@ -1,14 +1,19 @@
 import pathlib as plb
 import shutil
+import json
 
+import toml
+import yaml
 from invoke import task
 
 current_dir = plb.Path(__file__).absolute().parent
 
 
 @task
-def instantiate_template(c, cache_poetry_lock=False, cache_nox_dir=False):
-    template_dir = current_dir / ".template"
+def instantiate_template(
+    c, path=".template", cache_poetry_lock=False, cache_nox_dir=False
+):
+    template_dir = plb.Path(path).absolute()
     if not template_dir.exists():
         template_dir.mkdir()
     lock_file_cached = False
@@ -24,7 +29,7 @@ def instantiate_template(c, cache_poetry_lock=False, cache_nox_dir=False):
                 nox_dir_cached = True
                 c.run("mv .template/mypkg/.nox .template")
         shutil.rmtree(template_dir / "mypkg")
-    c.run(f"cookiecutter . --no-input --output-dir {str(current_dir / '.template')}")
+    c.run(f"cookiecutter . --no-input --output-dir {str(template_dir)}")
     if lock_file_cached:
         c.run("mv .template/poetry.lock .template/mypkg")
     if nox_dir_cached:
@@ -87,9 +92,7 @@ def lint(c, regen_template=True):
     if regen_template:
         instantiate_template(c)
     print("--- LINTING CODE (ruff)")
-    c.run(
-        "cd .template/mypkg && poetry run ruff check ."
-    )
+    c.run("cd .template/mypkg && poetry run ruff check .")
     print("--- END LINTING\n")
 
 
@@ -213,11 +216,39 @@ def nox(c, session="all", cache_nox_dir=True, cache_poetry_lock=False):
 
 
 @task
-def pre_commit(c, cache_poetry_lock=False):
-    """Run pre-commit in instantiated template"""
+def check_pre_commit_versions(c, cache_poetry_lock=False):
+    """Ensure that pre-commit revs equal package versions in poetry.lock"""
     instantiate_template(c, cache_nox_dir=False, cache_poetry_lock=cache_poetry_lock)
     if not cache_poetry_lock:
         lock_dependencies(c, regen_template=False)
-    c.run("cd .template/mypkg && poetry install --only dev")
-    c.run("cd .template/mypkg && poetry run pre-commit install")
-    c.run("cd .template/mypkg && poetry run pre-commit run --all")
+    with (current_dir / ".template" / "mypkg" / "poetry.lock").open("r") as inFile:
+        lock_file = toml.load(inFile)
+    with (current_dir / ".template" / "mypkg" / ".pre-commit-config.yaml").open(
+        "r"
+    ) as inFile:
+        pre_commit_config = yaml.safe_load(inFile)
+    with (current_dir / ".template" / "mypkg" / "sync_with_poetry.json").open(
+        "r"
+    ) as inFile:
+        sync_with_poetry = json.load(inFile)
+    pc_hooks = [
+        h
+        for h in pre_commit_config["repos"]
+        if h["repo"]
+        not in [
+            "https://github.com/pre-commit/pre-commit-hooks",
+            "https://github.com/floatingpurr/sync_with_poetry",
+        ]
+    ]
+    assert len(pc_hooks) == len(sync_with_poetry.keys())
+    print("Processing hooks ...")
+    for hook, v in sync_with_poetry.items():
+        print(f"Processing hook='{hook}'")
+        repo = v["repo"]
+        pc_repo = [r for r in pre_commit_config["repos"] if r["repo"] == repo]
+        lf_repo = [r for r in lock_file["package"] if r["name"] == hook]
+        assert len(lf_repo) == 1
+        assert len(pc_repo) == 1
+        assert pc_repo[0]["hooks"][0]["id"] == hook
+        assert pc_repo[0]["rev"].replace("v", "") == lf_repo[0]["version"]
+    print("PASSED! All versions in pre-commit hooks equal those in poetry.lock!")
