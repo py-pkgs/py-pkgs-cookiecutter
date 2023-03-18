@@ -45,7 +45,7 @@ jobs:
         run: poetry run invoke nox -c --session=all
 
       - name: Check pre-commit hook revs
-        run: poetry run invoke check_pre_commit_versions
+        run: poetry run invoke check-pre-commit-versions
 
       - name: Run tests
         run: poetry run invoke test
