@@ -1,0 +1,60 @@
+name: ci
+
+on:
+  # Trigger the workflow on push or pull request on main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Run cron job every month, https://crontab.guru/every-month
+    - cron: "0 0 1 * *"
+
+jobs:
+  # This job tests that the CC works
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.9"]
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+
+      - name: Setup Nox
+        uses: excitedleigh/setup-nox@v2.0.0
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run checklist
+        run: poetry run invoke checklist
+
+      - name: Run Nox
+        run: poetry run invoke nox -c --session=all
+
+      - name: Check pre-commit hook revs
+        run: poetry run invoke check_pre_commit_versions
+
+      - name: Run tests
+        run: poetry run invoke test
+
+      - name: Build docs
+        run: poetry run invoke build-docs
+
+      - name: Generate coverage report
+        run: poetry run coverage-report
+
+      - name: Report coverage
+        uses: orgoro/coverage@v3
+        with:
+            coverageFile: coverage.xml
+            token: ${{ secrets.GITHUB_TOKEN }}
