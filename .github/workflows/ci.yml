@@ -12,6 +12,12 @@ on:
     # Run cron job every month, https://crontab.guru/every-month
     - cron: "0 0 1 * *"
 
+# For GH pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   # This job tests that the CC works
   ci:
