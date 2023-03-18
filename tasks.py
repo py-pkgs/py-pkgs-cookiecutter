@@ -157,7 +157,7 @@ def check_dependency_issues(c, regen_template=True):
 
 
 @task
-def build_docs(c, regen_template=True):
+def build_template_docs(c, regen_template=True):
     """Build documentation using mkdocs"""
     if regen_template:
         instantiate_template(c)
@@ -189,7 +189,17 @@ def checklist(c):
     lint(c, regen_template=False)
     sort_imports(c, regen_template=False)
     check_type_hints(c, regen_template=False)
-    build_docs(c, regen_template=False)
+    build_template_docs(c, regen_template=False)
+
+
+@task
+def build_docs(c, regen_template=True):
+    """Build documentation using mkdocs"""
+    if regen_template:
+        instantiate_template(c)
+    print("--- BUILDING DOCS (mkdocs)")
+    c.run("mkdocs build")
+    print("--- END BUILDING DOCS\n")
 
 
 @task
