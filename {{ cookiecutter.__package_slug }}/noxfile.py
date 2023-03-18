@@ -82,7 +82,7 @@ def test(session):
 def build_docs(session):
     """Build project documentation"""
     session.install("mkdocs", ".")
-    session.install("mkdocstrings", ".")
+    session.install("mkdocstrings[python]", ".")
     session.install("mkdocs-include-markdown-plugin", ".")
     session.install("mkdocs-jupyter", ".")
     session.install("mkdocs-material", ".")

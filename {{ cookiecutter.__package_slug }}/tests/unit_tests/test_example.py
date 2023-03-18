@@ -1,4 +1,4 @@
-from {{cookiecutter.__package_slug}}.steps.example import nchar
+from {{cookiecutter.__package_slug}}.example import nchar
 
 
 def test_nchar_returns_none():

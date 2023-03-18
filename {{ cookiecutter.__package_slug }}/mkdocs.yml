@@ -4,6 +4,7 @@ repo_url: {{cookiecutter.repository}}
 nav:
   - Home: index.md
   - Usage: usage.ipynb
+  - API: {{cookiecutter.__package_slug}}.md
   - Changelog: changelog.md
   - Contributing: contributing.md
   - Conduct: conduct.md
@@ -13,13 +14,6 @@ theme:
 
 plugins:
 - search
-- mkdocstrings:
-    enabled: true
-    custom_templates: templates
-    default_handler: python
-    handlers:
-      python:
-        options:
-          show_source: false
+- mkdocstrings
 - include-markdown
 - mkdocs-jupyter

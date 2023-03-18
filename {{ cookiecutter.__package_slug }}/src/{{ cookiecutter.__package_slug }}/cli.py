@@ -4,7 +4,7 @@ import typer
 
 from {{cookiecutter.__package_slug}} import __version__
 from {{cookiecutter.__package_slug}}.commands import config
-from {{cookiecutter.__package_slug}}.steps.example import nchar
+from {{cookiecutter.__package_slug}}.example import nchar
 
 logger = logging.getLogger("{{ cookiecutter.__package_slug }}")
 handler = logging.StreamHandler()
