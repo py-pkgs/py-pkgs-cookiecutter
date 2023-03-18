@@ -64,6 +64,12 @@ def clean_artifacts(c):
     """This will clean python artifacts"""
     c.run('find . -type f -name "*.py[co]" -delete')
     c.run('find . -type d -name "__pycache__" -delete')
+    c.run('find . -type d -name ".pytest_cache" -delete')
+    c.run('find . -type d -name ".ruff_cache" -delete')
+    c.run('find . -type d -name ".mypy_cache" -delete')
+    c.run('find . -type d -name "htmlcov" -delete')
+    c.run('find . -type d -name "site" -delete')
+    c.run('find . -type f -name ".coverage" -delete')
 
 
 @task
@@ -131,12 +137,12 @@ def sort_imports(c, regen_template=True):
 
 
 @task
-def check_docstring_coverage(c, regen_template=True):
+def docstring_coverage(c, regen_template=True):
     """Check docstring coverage using interrogate"""
     if regen_template:
         instantiate_template(c)
     print("--- DOCSTRING COVERAGE (interrogate)")
-    c.run("poetry run interrogate -vv .template/mypkg/src")
+    c.run("poetry run interrogate -vv .template/mypkg/src -o docstring_coverage.txt")
     print("--- END DOCSTRING COVERAGE\n")
 
 
@@ -178,7 +184,7 @@ def checklist(c):
     lock_dependencies(c, regen_template=False)
     check_dependency_issues(c, regen_template=False)
     security_lint(c, regen_template=False)
-    check_docstring_coverage(c, regen_template=False)
+    docstring_coverage(c, regen_template=False)
     fmt_code(c, regen_template=False)
     lint(c, regen_template=False)
     sort_imports(c, regen_template=False)
@@ -198,7 +204,7 @@ def test(c):
 @task
 def coverage_report(c):
     """Generate coverage report"""
-    c.run("poetry run coverage html")
+    c.run("poetry run coverage xml")
 
 
 @task
