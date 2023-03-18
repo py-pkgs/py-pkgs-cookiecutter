@@ -50,11 +50,11 @@ jobs:
       - name: Run tests
         run: poetry run invoke test
 
+      - name: Generate coverage report
+        run: poetry run invoke coverage-report
+
       - name: Build docs
         run: poetry run invoke build-docs
-
-      - name: Generate coverage report
-        run: poetry run coverage-report
 
       - name: Report coverage
         uses: orgoro/coverage@v3

@@ -31,6 +31,7 @@ Possibly:
 - Nox action
 - Python coverage https://github.com/marketplace/actions/python-coverage
 - Github labeler https://github.com/marketplace/actions/github-labeler
+- Cache poetry
 
 ## Inspiration
 
