@@ -1,6 +1,6 @@
 ## Tools
 
-- Ruff (linter) https://github.com/charliermarsh/ruff
+- ~~Ruff (linter) https://github.com/charliermarsh/ruff~~
 
 ## Template
 
@@ -15,6 +15,7 @@
 - Pyproject config
 - Add mkdocstrings https://mkdocstrings.github.io/usage/
 - In noxfile pytest: find way to only install main dependencies
+- Adding e.g. interrogate report to PR as comment https://github.com/marketplace/actions/add-pr-comment
 
 Possibly:
 
