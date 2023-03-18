@@ -23,6 +23,9 @@
   ],
   "_copy_without_render": [
     ".github/*.yml",
-    "docs/*.md"
+    "docs/changelog.md",
+    "docs/conduct.md",
+    "docs/contributing.md",
+    "docs/index.md"
   ]
 }
