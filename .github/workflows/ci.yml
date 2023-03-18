@@ -24,6 +24,9 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v2
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
       - name: Install poetry
         uses: snok/install-poetry@v1
 
@@ -42,6 +45,7 @@ jobs:
         run: poetry run invoke checklist
 
       - name: Run Nox
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
         run: poetry run invoke nox -c --session=all
 
       - name: Check pre-commit hook revs
@@ -51,13 +55,27 @@ jobs:
         run: poetry run invoke test
 
       - name: Generate coverage report
+        if: ${{ github.event_name == 'pull_request'}}
         run: poetry run invoke coverage-report
 
-      - name: Build docs
-        run: poetry run invoke build-docs
-
       - name: Report coverage
+        if: ${{ github.event_name == 'pull_request'}}
         uses: orgoro/coverage@v3
         with:
             coverageFile: coverage.xml
             token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build docs
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+        run: poetry run invoke build-docs
+
+      - name: Upload artifact
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'site'
+
+      - name: Deploy to GitHub Pages
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+        id: deployment
+        uses: actions/deploy-pages@v1
