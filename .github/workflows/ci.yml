@@ -46,7 +46,6 @@ jobs:
         run: poetry run invoke checklist
 
       - name: Run Nox
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
         run: poetry run invoke nox -c --session=all
 
       - name: Check pre-commit hook revs
@@ -63,8 +62,8 @@ jobs:
         if: ${{ github.event_name == 'pull_request'}}
         uses: orgoro/coverage@v3
         with:
-            coverageFile: coverage.xml
-            token: ${{ secrets.GITHUB_TOKEN }}
+          coverageFile: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
   
   docstring_coverage:
     needs: checklist
