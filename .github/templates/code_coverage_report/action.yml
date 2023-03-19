@@ -1,0 +1,35 @@
+name: docstring_coverage_comment
+
+# Were we can define the inputs that our action will accept
+inputs:
+    path_to_src:
+        description: "Path to the source code"
+        required: true
+    github_repository:
+        description: "Name of the github repository"
+        required: true
+    pr_number:
+        description: "The PR number to which the output will be written"
+        required: true
+    token:
+        description: "GH API token with ability to add comments to issues"
+        required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Virtual environment
+      run: |
+        pip install --upgrade pip
+        python -m venv .gavenv
+      shell: bash
+    - name: Install dependencies
+      run: |
+        . .gavenv/bin/activate
+        pip3 install "markdown<3.4.0" "requests==2.28.2" "interrogate==1.5.0"
+      shell: bash
+    - name: Post docstring coverage
+      run: |
+        . .gavenv/bin/activate
+        python .github/templates/code_coverage_report/post_comment.py ${{ inputs.path_to_src }} ${{ inputs.github_repository }} ${{ inputs.pr_number }} ${{ inputs.token }}
+      shell: bash

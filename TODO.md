@@ -37,3 +37,4 @@ Possibly:
 
 - https://github.com/fpgmaas/cookiecutter-poetry
 - https://github.com/cjolowicz/cookiecutter-hypermodern-python
+- https://github.com/econchick/interrogate/tree/master/.github

@@ -17,15 +17,86 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  pull-requests: write
 
 jobs:
-  # This job tests that the CC works
-  ci:
+  static:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.9"]
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
+
+      - name: Install dependencies
+        run: poetry install --with dev --with docs
+
+      - name: Run checklist
+        run: poetry run invoke checklist
+
+      - name: Run Nox
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
+        run: poetry run invoke nox -c --session=all
+
+      - name: Check pre-commit hook revs
+        run: poetry run invoke check-pre-commit-versions
+
+      - name: Run tests
+        run: poetry run invoke test
+
+      - name: Generate coverage report
+        if: ${{ github.event_name == 'pull_request'}}
+        run: poetry run invoke coverage-report
+
+      - name: Report code coverage
+        if: ${{ github.event_name == 'pull_request'}}
+        uses: orgoro/coverage@v3
+        with:
+            coverageFile: coverage.xml
+            token: ${{ secrets.GITHUB_TOKEN }}
+  
+  docstring_coverage:
+    needs: static
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: pip install cookiecutter
+
+      - name: Instantiate template
+        run: |
+          cookiecutter . --no-input --output-dir .template
+
+      - name: Report docstring coverage
+        uses: "./.github/templates/code_coverage_report"
+        with:
+          path_to_src: '.template/mypkg'
+          github_repository: ${GITHUB_REPOSITORY}
+          pr_number: ${{ github.event.pull_request.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build_docs:
+    needs: [docstring_coverage]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
@@ -36,63 +107,23 @@ jobs:
       - name: Install poetry
         uses: snok/install-poetry@v1
 
-      - name: Setup Nox
-        uses: excitedleigh/setup-nox@v2.0.0
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9.5"
+          cache: 'poetry'
 
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: poetry install --only=docs
 
-      # - name: Install dependencies
-      #   run: poetry install --with dev --with docs
+      - name: Build docs
+        run: poetry run mkdocs build
 
-      # - name: Run checklist
-      #   run: poetry run invoke checklist
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'site'
 
-      # - name: Run Nox
-      #   if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
-      #   run: poetry run invoke nox -c --session=all
-
-      # - name: Check pre-commit hook revs
-      #   run: poetry run invoke check-pre-commit-versions
-
-      # - name: Run tests
-      #   run: poetry run invoke test
-
-      # - name: Generate coverage report
-      #   if: ${{ github.event_name == 'pull_request'}}
-      #   run: poetry run invoke coverage-report
-
-      # - name: Report code coverage
-      #   if: ${{ github.event_name == 'pull_request'}}
-      #   uses: orgoro/coverage@v3
-      #   with:
-      #       coverageFile: coverage.xml
-      #       token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Report docstring coverage
-        if: ${{ github.event_name == 'pull_request'}}
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          COMMIT_SHA: ${{ github.sha }}
-        run: |
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -X POST \
-            https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/reviews \
-            -d '{"commit_id":"${COMMIT_SHA}","body":"This is close to perfect! Please address the suggested inline change.","event":"COMMENT"}'
-
-      # - name: Build docs
-      #   if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
-      #   run: poetry run invoke build-docs
-
-      # - name: Upload artifact
-      #   if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     path: 'site'
-
-      # - name: Deploy to GitHub Pages
-      #   if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
-      #   id: deployment
-      #   uses: actions/deploy-pages@v1
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
