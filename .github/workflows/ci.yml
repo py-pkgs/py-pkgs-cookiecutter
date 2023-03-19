@@ -20,54 +20,54 @@ permissions:
   pull-requests: write
 
 jobs:
-  # static:
-  #   runs-on: ${{ matrix.os }}
-  #   strategy:
-  #     matrix:
-  #       os: [ubuntu-latest]
-  #       python-version: ["3.8.13"]
-  #   steps:
-  #     - name: Check out repo
-  #       uses: actions/checkout@v2
+  checklist:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.8.13"]
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
 
-  #     - name: Install poetry
-  #       uses: snok/install-poetry@v1
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
-  #     - name: Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: ${{ matrix.python-version }}
-  #         cache: 'poetry'
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
 
-  #     - name: Install dependencies
-  #       run: poetry install --with dev --with docs
+      - name: Install dependencies
+        run: poetry install --with dev --with docs
 
-  #     - name: Run checklist
-  #       run: poetry run invoke checklist
+      - name: Run checklist
+        run: poetry run invoke checklist
 
-  #     - name: Run Nox
-  #       if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
-  #       run: poetry run invoke nox -c --session=all
+      - name: Run Nox
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')}}
+        run: poetry run invoke nox -c --session=all
 
-  #     - name: Check pre-commit hook revs
-  #       run: poetry run invoke check-pre-commit-versions
+      - name: Check pre-commit hook revs
+        run: poetry run invoke check-pre-commit-versions
 
-  #     - name: Run tests
-  #       run: poetry run invoke test
+      - name: Run tests
+        run: poetry run invoke test
 
-  #     - name: Generate coverage report
-  #       if: ${{ github.event_name == 'pull_request'}}
-  #       run: poetry run invoke coverage-report
+      - name: Generate coverage report
+        if: ${{ github.event_name == 'pull_request'}}
+        run: poetry run invoke coverage-report
 
-  #     - name: Report code coverage
-  #       if: ${{ github.event_name == 'pull_request'}}
-  #       uses: orgoro/coverage@v3
-  #       with:
-  #           coverageFile: coverage.xml
-  #           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Report code coverage
+        if: ${{ github.event_name == 'pull_request'}}
+        uses: orgoro/coverage@v3
+        with:
+            coverageFile: coverage.xml
+            token: ${{ secrets.GITHUB_TOKEN }}
   
   docstring_coverage:
-    #needs: static
+    needs: checklist
     if: ${{ github.event_name == 'pull_request'}}
     runs-on: ubuntu-latest
     steps:
@@ -95,7 +95,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   build_docs:
-    #needs: [static]
+    needs: [checklist]
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main'}}
     runs-on: ubuntu-latest
     steps:
