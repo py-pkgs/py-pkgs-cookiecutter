@@ -87,7 +87,7 @@ jobs:
           cookiecutter . --no-input --output-dir .template
 
       - name: Report docstring coverage
-        uses: JasperHG90/toiminnot/docstring-coverage-report@36a879e
+        uses: JasperHG90/toiminnot/docstring-coverage-report@36a879e2095cbc31ae4ac81d6afdc7eb7c0212b7
         with:
           path_to_src: '.template/mypkg'
           github_repository: ${GITHUB_REPOSITORY}
