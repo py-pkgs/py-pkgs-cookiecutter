@@ -19,26 +19,33 @@ pydantic = "^1.10.6"
 pydantic-yaml = {extras = ["pyyaml", "ruamel"], version = "^0.8.1"}
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^0.990"
 pre-commit = "^2.12.1"
-pytest = "^6.0"
-pytest-cov = "^2.11.1"
-isort = "^5.10.1"
-black = "^22.10.0"
-ipykernel = "^6.15.1"
-python-semantic-release = "^7.32.1"
-interrogate = "^1.5.0"
+tomli = "^2.0.1"
+nox = "^2022.11.21"
+nox-poetry = "^1.0.2"
+python-dotenv = "^1.0.0"
 invoke = "<2.0.0"
 gitpython = "^3.1.31"
-coverage = "^7.2.1"
-python-dotenv = "^1.0.0"
+python-semantic-release = "^7.32.1"
+ipykernel = "^6.15.1"
+
+[tool.poetry.group.static.dependencies]
+mypy = "^0.990"
+isort = "^5.10.1"
+black = "^22.10.0"
+interrogate = "^1.5.0"
 pyproject-fmt = "<0.9"
 deptry = "^0.8.0"
 bandit = "^1.7.5"
 ruff = "^0.0.256"
-tomli = "^2.0.1"
-nox = "^2022.11.21"
-nox-poetry = "^1.0.2"
+
+[tool.poetry.group.test.dependencies]
+pytest = ">6"
+pytest-dotenv = "^0.5.2"
+coverage = "^7.2.1"
+
+[tool.poetry.group.docs]
+optional = true
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"
