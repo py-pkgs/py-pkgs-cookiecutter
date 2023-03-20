@@ -12,30 +12,35 @@ pydantic = "^1.10.6"
 cookiecutter = "^2.1.1"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^3.9.2"
-mypy = "^0.812"
 pre-commit = "^2.12.1"
-pytest-dotenv = "^0.5.2"
-isort = "^5.9.2"
 python-semantic-release = "7.28.1"
-black = "^22.3.0"
 ipykernel = "^6.15.1"
 invoke = "<2.0.0"
 gitpython = "^3.1.31"
 python-dotenv = "^1.0.0"
 nox = "^2022.11.21"
 nox-poetry = "^1.0.2"
+tomli = "^2.0.1"
+
+[tool.poetry.group.static.dependencies]
+mypy = "^0.812"
+isort = "^5.9.2"
+black = "^22.3.0"
 interrogate = "^1.5.0"
-coverage = "^7.2.1"
 codespell = "^2.2.4"
 pyproject-fmt = "<0.9"
 deptry = "^0.8.0"
 pyupgrade = "^3.3.1"
 bandit = "^1.7.5"
-typeguard = "^3.0.0"
 ruff = "^0.0.256"
-tomli = "^2.0.1"
+
+[tool.poetry.group.test.dependencies]
 pytest = ">6"
+pytest-dotenv = "^0.5.2"
+coverage = "^7.2.1"
+
+[tool.poetry.group.docs]
+optional = true
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.4.2"

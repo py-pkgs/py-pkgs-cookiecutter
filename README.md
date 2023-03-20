@@ -8,7 +8,25 @@
 [![os](https://img.shields.io/badge/OS-Ubuntu%2C%20Mac%2C%20Windows-purple)]()
 -->
 
-This poetry template is primarily intended to be used with data/ml pipelines.
+This is a poetry package template used for creating python packages using modern development tools.
+
+This package template was adapted from [the py-pkgs cookiecutter template](https://py-pkgs-cookiecutter.readthedocs.io/en/latest/) by Thomas Beuzen.
+
+## Features
+
+This template uses the following tools for development, code quality & testing:
+
+- `Poetry` (obviously)
+- `Black` for code formatting
+- `Isort` for sorting dependencies
+- `Codespell` for correcting spelling
+- `Ruff` for linting
+- `Pyproject-fmt` to format pyproject.toml
+- `Interrogate` for docstring coverage
+- `Deptry` to check for possible package conflicts
+- `Mypy` for type hint checking
+- `Nox` for testing across python versions
+- `Invoke` for defining re-usable / useful commands
 
 ## Usage
 
