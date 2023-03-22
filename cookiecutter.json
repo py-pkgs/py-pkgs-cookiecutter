@@ -1,17 +1,17 @@
 {
-  "author_name": "Monty Python",
+  "author_name": "GRETA Inc.",
   "package_name": "mypkg",
   "__package_slug": "{{ cookiecutter.package_name|lower|replace(' ', '_')|replace('-', '_') }}",
   "package_short_description": "A package for doing great things!",
   "package_version": "0.1.0",
   "python_version": "3.9",
   "open_source_license": [
+    "Proprietary",
     "MIT",
     "Apache License 2.0",
     "GNU General Public License v3.0",
     "CC0 v1.0 Universal",
     "BSD 3-Clause",
-    "Proprietary",
     "None"
   ],
   "include_github_actions": [
