@@ -5,6 +5,7 @@ import shutil
 # Utilities
 ##############################################################################
 
+
 def remove(filepath):
     if os.path.isfile(filepath):
         os.remove(filepath)
@@ -16,19 +17,14 @@ def remove(filepath):
 # Cookiecutter clean-up
 ##############################################################################
 
-# Directive flags
-no_github_actions = "{{cookiecutter.include_github_actions}}" == "no"
-github_actions_ci = "{{cookiecutter.include_github_actions}}" == "ci"
-no_license = "{{cookiecutter.open_source_license}}" == "None"
-
-# Remove workflow files (if specified)
-if no_github_actions:
+if "{{cookiecutter.include_github_actions}}" == "no":
     remove(".github/")
-elif github_actions_ci:
-    remove(".github/workflows/ci-cd.yml")
 else:
-    remove(".github/workflows/ci.yml")
+    for root, dirs, files in os.walk(".github/workflows/"):
+        for name in files:
+            if not name.endswith("%s.yml" % "{{cookiecutter.include_github_actions}}"):
+                remove(os.path.join(root, name))
 
 # Remove license (if specified)
-if no_license:
+if "{{cookiecutter.open_source_license}}" == "None":
     remove("LICENSE")
