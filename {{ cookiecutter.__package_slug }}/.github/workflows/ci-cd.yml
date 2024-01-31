@@ -74,6 +74,7 @@ jobs:
           password: {% raw %}${{ secrets.TEST_PYPI_API_TOKEN }}{% endraw %}
 
       - name: Test install from TestPyPI
+        if: steps.release.outputs.released == 'true'
         run: |
             pip install \
             --index-url https://test.pypi.org/simple/ \
