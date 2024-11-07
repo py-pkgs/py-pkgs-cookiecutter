@@ -1,0 +1,86 @@
+# Git-related files
+.git
+.gitignore
+.gitattributes
+
+# CI/CD and configuration files
+.codeclimate.yml
+.travis.yml
+.taskcluster.yml
+.github/
+.circleci/
+.gitlab-ci.yml
+
+# Docker-related files
+docker-compose.yml
+Dockerfile
+.docker/
+.dockerignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*_cache/
+
+# C extensions
+*.so
+
+# Distribution / packaging files
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+*.coverage
+*.cache
+*.mo
+*.pot
+
+# Coverage and test-related files
+htmlcov/
+.tox/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+
+# Documentation and build artifacts
+docs/_build/
+target/
+
+# Virtual environments
+.env
+.venv/
+venv/
+env/
+env.bak/
+
+# IDE-specific directories and settings
+.idea/
+.vscode/
+*.iml
+
+# PyInstaller-specific files
+*.manifest
+*.spec
+
+# Python mode for VIM
+.ropeproject/
