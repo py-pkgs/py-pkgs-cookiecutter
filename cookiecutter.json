@@ -4,7 +4,7 @@
   "__package_slug": "{{ cookiecutter.package_name|lower|replace(' ', '_')|replace('-', '_') }}",
   "package_short_description": "A package for doing great things!",
   "package_version": "0.1.0",
-  "python_version": "3.9",
+  "python_version": "3.12",
   "open_source_license": [
     "MIT",
     "Apache License 2.0",
@@ -18,5 +18,17 @@
     "no",
     "ci",
     "ci+cd"
+  ],
+  "include_docker_support": [
+    "no",
+    "yes"
+  ],
+  "include_codeql_analysis": [
+    "no",
+    "yes"
+  ],
+  "include_stale_issues_bot": [
+    "no",
+    "yes"
   ]
 }

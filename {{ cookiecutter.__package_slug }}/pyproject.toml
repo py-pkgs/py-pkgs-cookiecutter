@@ -1,24 +1,67 @@
-[tool.poetry]
-name = "{{ cookiecutter.__package_slug }}"
-version = "{{ cookiecutter.package_version }}"
+[project]
+authors = [{ name = "{{ cookiecutter.author_name }}" }]
 description = "{{ cookiecutter.package_short_description }}"
-authors = ["{{ cookiecutter.author_name }}"]
-license = "{{ cookiecutter.open_source_license }}"
+license = { file = "LICENSE" }
+name = "{{ cookiecutter.__package_slug }}"
 readme = "README.md"
+requires-python = "^{{ cookiecutter.python_version }}"
+version = "{{ cookiecutter.package_version }}"
 
-[tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
+[dependency-groups]
+dev = [
+  "bandit",
+  "mypy",
+  "pre-commit",
+  "pylint",
+  "pytest",
+  "pytest-cov",
+  "python-semantic-release",
+  "ruff",
+]
+docs = ["myst-parser", "sphinx-copybutton", "sphinx-prompt", "sphinx-rtd-theme"]
 
-[tool.poetry.dev-dependencies]
-{% if cookiecutter.include_github_actions == 'ci+cd' -%}
-[tool.semantic_release]
-version_toml = [
-    "pyproject.toml:tool.poetry.version",
-]                                                    # version location
-branch = "main"                                      # branch to make releases of
-changelog_file = "CHANGELOG.md"                      # changelog file
-build_command = "pip install poetry && poetry build" # build dists 
-{% endif %}
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.semantic_release]
+branch = "main"                                   # branch to make releases of
+build_command = "pip install uv && uv build"      # build dists
+changelog_file = "CHANGELOG.md"                   # changelog file
+version_toml = ["pyproject.toml:project.version"] # version location
+
+[tool.coverage]
+omit = ["examples/*", "tests/*"]
+report.fail_under = 80
+report.show_missing = true
+report.skip_covered = true
+run.branch = true
+source = ["{{ cookiecutter.__package_slug }}"]
+
+[tool.pytest]
+ini_options.addopts = "--cov={{ cookiecutter.__package_slug }} --cov-report=term-missing --cov-report=xml --cov-fail-under=80"
+ini_options.testpaths = "tests"
+
+[tool.ruff]
+fix = true
+format.docstring-code-format = true
+format.docstring-code-line-length = "dynamic"
+format.indent-style = "space"
+format.line-ending = "auto"
+format.preview = true
+format.quote-style = "double"
+format.skip-magic-trailing-comma = false
+line-length = 100
+lint.fixable = ["ALL"]
+lint.ignore = ["COM812", "D203", "D213", "INP001", "ISC001"]
+lint.per-file-ignores."tests/*" = ["S101"]
+lint.pydocstyle.convention = "google"
+lint.select = ["ALL"]
+lint.unfixable = []
+
+[tool.mypy]
+disable_error_code = "import-untyped"
+exclude = ["build", "out"]
+
+[tool.bandit]
+exclude_dirs = [".venv", "tests"]

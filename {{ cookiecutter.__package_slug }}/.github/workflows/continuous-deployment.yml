@@ -1,0 +1,64 @@
+name: Continuous Deployment
+
+on:
+  workflow_run:
+    workflows: ["Continuous Integration"]
+    types: [completed]
+
+env:
+  UV_CACHE_DIR: /tmp/.uv-cache
+
+jobs:
+  cd:
+    name: CD - Release Deployment
+    runs-on: ubuntu-latest
+    concurrency: cd-${{ github.ref }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Ensure Correct Release Branch
+        run: |
+          git checkout -B ${{ github.ref_name }} ${{ github.sha }}
+
+      - name: Set Up UV Environment
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Dependencies
+        run: uv sync
+
+      - name: Run Python Semantic Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v9
+        with:
+          github_token: '${{ secrets.GH_PAT }}'
+          git_committer_name: '{{ cookiecutter.author_name }}'
+          ssh_private_signing_key: '${{ secrets.GIT_COMMIT_SSH_PRIV_KEY }}'
+          ssh_public_signing_key: '${{ secrets.GIT_COMMIT_SSH_PUB_KEY }}'
+
+      - name: Publish to TestPyPI
+        if: steps.release.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@v1.12.1
+        with:
+          repository-url: 'https://test.pypi.org/legacy/'
+          attestations: false
+
+      - name: Test Install from TestPyPI
+        if: steps.release.outputs.released == 'true'
+        run: uv pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple {{ cookiecutter.__package_slug }}
+
+      - name: Publish to PyPI
+        if: steps.release.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@v1.12

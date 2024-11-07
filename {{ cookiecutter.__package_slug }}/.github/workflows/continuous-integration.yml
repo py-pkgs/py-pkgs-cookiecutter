@@ -1,0 +1,80 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: CI - Code Quality and Documentation Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11, {{ cookiecutter.python_version }}, 3.13]
+      fail-fast: true
+    timeout-minutes: 20
+    env:
+      UV_CACHE_DIR: /tmp/uv-cache-${{ matrix.python-version }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup UV Environment
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Cache UV Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.UV_CACHE_DIR }}
+          key: "uv-${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('uv.lock') }}"
+          restore-keys: |
+            uv-${{ matrix.python-version }}-${{ runner.os }}
+
+      - name: Install and Sync Dependencies
+        run: uv sync
+
+      - name: Run Code Quality Checks
+        run: |
+          uv run ruff format ./
+          uv run ruff check --fix ./
+          uv run mypy ./
+          uv run pylint ./
+          uv run pytest ./
+          uv run bandit -c pyproject.toml -r ./
+
+      - name: Build Documentation (Python 3.13 only)
+        if: matrix.python-version == '3.13'
+        run: uv run --group=docs make clean html --directory docs/
+
+      - name: Deploy Documentation to GitHub Pages (Python 3.11 only)
+        if: success() && matrix.python-version == '3.11'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html
+
+      - name: Scan Codebase with SonarCloud (Python 3.13 only)
+        if: matrix.python-version == '3.13'
+        uses: SonarSource/sonarcloud-github-action@v3
+        env:
+          SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
+
+      - name: Upload Test Coverage Report to Codecov (Python 3.13 only)
+        if: success() && matrix.python-version == '3.13'
+        uses: codecov/codecov-action@v4
+        with:
+          token: '${{ secrets.CODECOV_TOKEN }}'
+          file: ./coverage.xml
+          fail_ci_if_error: true
+
+      - name: Minimize UV Cache
+        if: always()
+        run: uv cache prune --ci

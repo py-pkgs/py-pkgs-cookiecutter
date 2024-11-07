@@ -10,4 +10,5 @@ changelog.md
 contributing.md
 conduct.md
 autoapi/index
+license.md
 ```

@@ -1,2 +1,0 @@
-cookiecutter >= 2
-pytest

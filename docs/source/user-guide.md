@@ -41,7 +41,7 @@ This section provides a high-level walk through of building a Python packge usin
 4. Create and activate a virtual environment using `conda`. Read more in [Section 3.5.1: Create a virtual environment](https://py-pkgs.org/03-how-to-package-a-python#create-a-virtual-environment) of the Python Packages book.
 
     ```{prompt} bash
-    conda create --name <your-env-name> python=3.9 -y
+    conda create --name <your-env-name> python=3.11 -y
     conda activate <your-env-name>
     ```
 
