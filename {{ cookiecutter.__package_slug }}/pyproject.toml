@@ -9,7 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
 
-[tool.poetry.dev-dependencies]
 {% if cookiecutter.include_github_actions == 'ci+cd' -%}
 [tool.semantic_release]
 version_toml = [
