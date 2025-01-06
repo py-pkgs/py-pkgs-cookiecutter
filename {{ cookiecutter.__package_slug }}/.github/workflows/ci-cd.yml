@@ -29,7 +29,7 @@ jobs:
       - name: Use Codecov to track coverage
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: {% raw %}${{ secrets.CODECOV_TOKEN }}{% endraw %}
           files: ./coverage.xml   # coverage report
 
       - name: Build documentation
