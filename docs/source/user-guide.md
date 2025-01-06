@@ -130,7 +130,7 @@ A GitHub Actions workflow file for continuous integration will be included in yo
 - Sets up a Ubuntu operating system, checks out your repository, installs Python 3.9, and installs the latest version of `poetry`.
 - Installs your package with `poetry install`
 - Runs test with `pytest tests/`
-- Upload code coverage of tests to Codecov
+- Upload code coverage of tests to Codecov. For this to work, you'll need to log-in to [Codecov]([https://test.pypi.org](https://about.codecov.io/), manually add and activate your project's GitHub repository on Codecov, [get the repository upload token](https://docs.codecov.com/docs/quick-start#step-2-get-the-repository-upload-token), and [add the token as a secret](https://docs.github.com/en/actions/reference/encrypted-secrets) called `CODECOV_TOKEN` to your GitHub repository.
 - Builds documentation with `sphinx`
 
 ### CI+CD (continuous integration + continuous deployment)
